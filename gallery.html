@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Mahi Maps | Sri Lanka Travel Memories</title>
+    <meta name="description"
+        content="Browse our gallery of Sri Lanka tours, vehicles, destinations, and happy travelers.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .gallery-hero {
+            position: relative;
+            height: 40vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('assets/images/gallery-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .gallery-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gallery-hero p {
+            position: relative;
+            z-index: 1;
+        }
+
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-2xl);
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--ocean-blue);
+            background: var(--white);
+            color: var(--ocean-blue);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--ocean-blue);
+            color: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 300px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: var(--spacing-md);
+            color: var(--white);
+            transform: translateY(100%);
+            transition: var(--transition-base);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h3 {
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-hero h1 {
+                font-size: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .gallery-item {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="assets/images/mahi-logo.png" alt="Mahi Maps - Travel & Tour Sri Lanka" style="height: 45px;">
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="vehicles.html" class="nav-link">Vehicles</a></li>
+                <li><a href="tours.html" class="nav-link">Tours</a></li>
+                <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="vehicles.html#booking" class="btn-book-nav">Book Now</a>
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Gallery Hero -->
+    <section class="gallery-hero">
+        <div class="container">
+            <h1>Our Gallery</h1>
+            <p style="font-size: 1.25rem; opacity: 0.95;">Moments captured from unforgettable journeys</p>
+        </div>
+    </section>
+
+    <!-- Gallery Filters -->
+    <section style="padding-top: var(--spacing-2xl);">
+        <div class="container">
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="mahi-maps">Mahi Maps</button>
+                <button class="filter-btn" data-filter="tours">Tours</button>
+                <button class="filter-btn" data-filter="travelers">Happy Travels</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="gallery-grid">
+                <!-- Destinations -->
+                <div class="gallery-item" data-category="destinations">
+                    <img src="assets/images/sigiriya-fortress.png" alt="Sigiriya Rock Fortress">
+                    <div class="gallery-overlay">
+                        <h3>Sigiriya Rock Fortress</h3>
+                        <p>Ancient wonder of Sri Lanka</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="destinations">
+                    <img src="assets/images/mirissa-beach.png" alt="Mirissa Beach">
+                    <div class="gallery-overlay">
+                        <h3>Mirissa Beach</h3>
+                        <p>Tropical paradise</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="destinations">
+                    <img src="assets/images/hero-background-2.jpg" alt="Ella Hills">
+                    <div class="gallery-overlay">
+                        <h3>Ella Hills</h3>
+                        <p>Misty mountain beauty</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="destinations">
+                    <img src="assets/images/galle-fort.png" alt="Galle Fort">
+                    <div class="gallery-overlay">
+                        <h3>Galle Fort</h3>
+                        <p>Colonial heritage site</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="destinations">
+                    <img src="assets/images/ella-nine-arch.png" alt="Nine Arch Bridge">
+                    <div class="gallery-overlay">
+                        <h3>Nine Arch Bridge</h3>
+                        <p>Architectural marvel</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="destinations">
+                    <img src="assets/images/kandy-temple.png" alt="Temple of the Tooth">
+                    <div class="gallery-overlay">
+                        <h3>Temple of the Tooth</h3>
+                        <p>Sacred Buddhist temple</p>
+                    </div>
+                </div>
+
+                <!-- Mahi Maps Images -->
+                <div class="gallery-item" data-category="mahi-maps">
+                    <img src="assets/tours/mahi 1.JPG" alt="Mahi Map 1">
+                    <div class="gallery-overlay">
+                        <h3>Mahi Map 1</h3>
+                        <p>Route details</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="mahi-maps">
+                    <img src="assets/tours/mahi 2.JPG" alt="Mahi Map 2">
+                    <div class="gallery-overlay">
+                        <h3>Mahi Map 2</h3>
+                        <p>Route details</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="mahi-maps">
+                    <img src="assets/tours/mahi 3.JPG" alt="Mahi Map 3">
+                    <div class="gallery-overlay">
+                        <h3>Mahi Map 3</h3>
+                        <p>Route details</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="mahi-maps">
+                    <img src="assets/tours/mahi 4.JPG" alt="Mahi Map 4">
+                    <div class="gallery-overlay">
+                        <h3>Mahi Map 4</h3>
+                        <p>Route details</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="mahi-maps">
+                    <img src="assets/tours/mahi 5.PNG" alt="Mahi Map 5">
+                    <div class="gallery-overlay">
+                        <h3>Mahi Map 5</h3>
+                        <p>Route details</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="mahi-maps">
+                    <img src="assets/tours/mahi 6.PNG" alt="Mahi Map 6">
+                    <div class="gallery-overlay">
+                        <h3>Mahi Map 6</h3>
+                        <p>Route details</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="mahi-maps">
+                    <img src="assets/tours/mahi 7.PNG" alt="Mahi Map 7">
+                    <div class="gallery-overlay">
+                        <h3>Mahi Map 7</h3>
+                        <p>Route details</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="mahi-maps">
+                    <img src="assets/tours/mahi 8.PNG" alt="Mahi Map 8">
+                    <div class="gallery-overlay">
+                        <h3>Mahi Map 8</h3>
+                        <p>Route details</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="mahi-maps">
+                    <img src="assets/tours/mahi 9.JPG" alt="Mahi Map 9">
+                    <div class="gallery-overlay">
+                        <h3>Mahi Map 9</h3>
+                        <p>Route details</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="mahi-maps">
+                    <img src="assets/tours/mahi 11.PNG" alt="Mahi Map 11">
+                    <div class="gallery-overlay">
+                        <h3>Mahi Map 11</h3>
+                        <p>Route details</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="mahi-maps">
+                    <img src="assets/tours/mahi 12.PNG" alt="Mahi Map 12">
+                    <div class="gallery-overlay">
+                        <h3>Mahi Map 12</h3>
+                        <p>Route details</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="mahi-maps">
+                    <img src="assets/tours/mahi 13.PNG" alt="Mahi Map 13">
+                    <div class="gallery-overlay">
+                        <h3>Mahi Map 13</h3>
+                        <p>Route details</p>
+                    </div>
+                </div>
+
+                <!-- Tours -->
+                <div class="gallery-item" data-category="tours">
+                    <img src="assets/images/yala-national-park.png" alt="Wildlife Safari">
+                    <div class="gallery-overlay">
+                        <h3>Wildlife Safari</h3>
+                        <p>Yala National Park</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="tours">
+                    <img src="assets/images/hero-background-4.jpg" alt="Tea Plantation Tour">
+                    <div class="gallery-overlay">
+                        <h3>Tea Plantation Tour</h3>
+                        <p>Hill country experience</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="tours">
+                    <img src="assets/images/hero-background-5.jpg" alt="Whale Watching">
+                    <div class="gallery-overlay">
+                        <h3>Whale Watching</h3>
+                        <p>Mirissa coast</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="tours">
+                    <img src="assets/images/ella-nine-arch.png" alt="Train Journey">
+                    <div class="gallery-overlay">
+                        <h3>Train Journey</h3>
+                        <p>Kandy to Ella scenic route</p>
+                    </div>
+                </div>
+
+                <!-- Happy Travelers -->
+                <div class="gallery-item" data-category="travelers">
+                    <img src="assets/images/friends-together.png" alt="Happy Travelers">
+                    <div class="gallery-overlay">
+                        <h3>Happy Travelers</h3>
+                        <p>Making memories</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="travelers">
+                    <img src="assets/images/family-activities.png" alt="Family Adventure">
+                    <div class="gallery-overlay">
+                        <h3>Family Adventure</h3>
+                        <p>Creating lasting bonds</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="travelers">
+                    <img src="assets/images/unique-adventures.png" alt="Group Tour">
+                    <div class="gallery-overlay">
+                        <h3>Group Tour</h3>
+                        <p>Friends exploring together</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="travelers">
+                    <img src="assets/images/weekend-adventures.png" alt="Romantic Getaway">
+                    <div class="gallery-overlay">
+                        <h3>Romantic Getaway</h3>
+                        <p>Couples retreat</p>
+                    </div>
+                </div>
+
+                <!-- More Destinations -->
+                <div class="gallery-item" data-category="destinations">
+                    <img src="assets/images/hero-background-3.jpg" alt="Unawatuna Beach">
+                    <div class="gallery-overlay">
+                        <h3>Unawatuna Beach</h3>
+                        <p>Crystal clear waters</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="destinations">
+                    <img src="assets/images/yala-national-park.png" alt="Yala National Park">
+                    <div class="gallery-overlay">
+                        <h3>Yala National Park</h3>
+                        <p>Wildlife wonderland</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="background: var(--gray-50); text-align: center;">
+        <div class="container">
+            <h2 class="section-title">Create Your Own Memories</h2>
+            <p class="section-subtitle" style="margin-bottom: var(--spacing-xl);">Start your Sri Lanka adventure today
+            </p>
+            <a href="contact.html" class="btn btn-primary">Book Your Tour</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer Redesign -->
+    <footer class="footer-modern">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand-col">
+                    <img src="assets/images/mahi-logo.png" alt="Mahi Maps" class="footer-logo">
+                    <p>Travel beyond boundaries. Discover, connect, and experience the beautiful island of Sri Lanka
+                        with us.</p>
+                    <div class="social-links-minimal">
+                        <a href="https://www.facebook.com/share/1E5aVVFGKd/?mibextid=wwXIfr" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/mahimaps_?igsh=MTl1eWN0dmhsMzVzcw==" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="vehicles.html">Our Fleet</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Get in Touch</h4>
+                    <ul class="contact-list">
+                        <li><a href="tel:+94743592570">+94 74 359 2570</a></li>
+                        <li><a href="mailto:mahimapsinfo@gmail.com">mahimapsinfo@gmail.com</a></li>
+                        <li>Galle, Rathgama, Sri Lanka</li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Instagram Post</h4>
+                    <div class="insta-grid">
+                        <img src="assets/images/sigiriya-fortress.png" alt="Sri Lanka 1">
+                        <img src="assets/images/mirissa-beach.png" alt="Sri Lanka 2">
+                        <img src="assets/images/ella-nine-arch.png" alt="Sri Lanka 3">
+                        <img src="assets/images/tour-hero.jpg" alt="Sri Lanka 4">
+                        <img src="assets/images/gallery-hero.jpg" alt="Sri Lanka 5">
+                        <img src="assets/images/friends-together.png" alt="Sri Lanka 6">
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Copyright © Mahi Maps 2026. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/94743592570" class="whatsapp-float" target="_blank">
+        <span class="whatsapp-icon">💬</span>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

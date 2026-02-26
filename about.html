@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Mahi Maps | Your Trusted Sri Lanka Travel Partner</title>
+    <meta name="description"
+        content="Learn about Mahi Maps - experienced drivers, premium vehicles, and exceptional service for Sri Lanka tours.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .story-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+            align-items: center;
+        }
+
+        .story-image {
+            height: 400px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .story-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .story-content h2 {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--gray-900);
+        }
+
+        .story-content p {
+            color: var(--gray-600);
+            line-height: 1.8;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-2xl);
+        }
+
+        .value-card {
+            background: var(--white);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            border-top: 4px solid var(--ocean-blue);
+            transition: var(--transition-base);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Scroll Down Button */
+        .scroll-down-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: var(--spacing-xl) 0;
+            background: var(--white);
+        }
+
+        .scroll-down-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            color: #000;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 50%;
+            background: var(--white);
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .scroll-down-button:hover {
+            background: #f5f5f5;
+            transform: translateY(5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .scroll-down-button svg {
+            animation: bounce-down 2s infinite;
+        }
+
+        @keyframes bounce-down {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(10px);
+            }
+
+            60% {
+                transform: translateY(5px);
+            }
+        }
+
+
+
+        @media (max-width: 768px) {
+            .story-section {
+                grid-template-columns: 1fr;
+            }
+
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="assets/images/mahi-logo.png" alt="Mahi Maps - Travel & Tour Sri Lanka" style="height: 45px;">
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link active">About Us</a></li>
+                <li><a href="vehicles.html" class="nav-link">Vehicles</a></li>
+                <li><a href="tours.html" class="nav-link">Tours</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="vehicles.html#booking" class="btn-book-nav">Book Now</a>
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- About Hero -->
+    <!-- About Hero Redesign -->
+    <!-- About Hero Redesign (Split Layout) -->
+    <section class="hero-split-modern">
+        <div class="container">
+            <div class="hero-split-grid">
+                <!-- Left: Content -->
+                <div class="hero-split-content">
+                    <h1 class="hero-split-title">Turn Your Journey<br>into Unforgettable<br>Memories with Us</h1>
+                    <p class="hero-split-desc">
+                        Explore the hidden gems of Sri Lanka. From pristine beaches to ancient temples, we curate
+                        experiences that stay with you forever.
+                    </p>
+                    <div class="hero-split-buttons">
+                        <a href="vehicles.html#booking" class="btn-primary-black">Start Booking</a>
+                        <a href="tours.html" class="btn-secondary-outline">Explore Tours</a>
+                    </div>
+                    <div class="hero-social-proof">
+                        <div class="avatar-group">
+                            <img src="assets/images/sigiriya-fortress.png" alt="User">
+                            <img src="assets/images/mirissa-beach.png" alt="User">
+                            <img src="assets/images/ella-nine-arch.png" alt="User">
+                            <img src="assets/images/tour-hero.jpg" alt="User">
+                        </div>
+                        <p>Join with <strong>2100+ Travelers</strong> and start<br>your adventure now</p>
+                    </div>
+                </div>
+
+                <!-- Right: Image Grid -->
+                <div class="hero-split-images">
+                    <div class="hero-img-col">
+                        <img src="assets/images/sigiriya-fortress.png" class="hero-img-card" alt="Sigiriya">
+                        <img src="assets/images/mirissa-beach.png" class="hero-img-card" alt="Mirissa">
+                    </div>
+                    <div class="hero-img-col offset-top">
+                        <img src="assets/images/ella-nine-arch.png" class="hero-img-card" alt="Ella">
+                        <img src="assets/images/gallery-hero.jpg" class="hero-img-card" alt="Gallery">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll Down Button -->
+    <div class="scroll-down-container">
+        <a href="#story" class="scroll-down-button">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 13L12 18L17 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M7 6L12 11L17 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </a>
+    </div>
+
+    <!-- Our Story -->
+    <section id="story">
+        <div class="container">
+            <div class="story-section">
+                <div class="story-image">
+                    <img src="assets/images/mahi-logo.png" alt="Our Story - Mahi Maps">
+                </div>
+                <div class="story-content">
+                    <h2>Our Story</h2>
+                    <p>Mahi Maps was born from a passion for sharing the beauty of Sri Lanka with travelers from
+                        around the world. What started as a small family business has grown into one of the island's
+                        most trusted tourism cab services.</p>
+                    <p>With over a decade of experience, we've helped thousands of travelers discover the hidden gems of
+                        Sri Lanka - from the ancient ruins of Anuradhapura to the pristine beaches of Mirissa, from the
+                        misty hills of Ella to the wildlife wonders of Yala.</p>
+                    <p>Our mission is simple: provide safe, comfortable, and memorable travel experiences that showcase
+                        the true spirit of Sri Lankan hospitality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bento Grid Section -->
+    <section class="bento-section">
+        <div class="container">
+            <div class="bento-grid">
+                <!-- Top Left: Feature Card -->
+                <div class="bento-card bento-feature">
+                    <div class="bento-tag">● About Us</div>
+                    <h2 class="bento-title">MAHI MAPS:<br>YOUR ULTIMATE<br>TRAVEL PARTNER.</h2>
+                    <p class="bento-text">Mahi Maps is your ultimate travel partner, offering expertise, quality
+                        vehicles, and a passion for island experiences. Our team is dedicated to helping you make
+                        unforgettable memories on your journeys. Join us today and elevate your Sri Lankan adventures to
+                        new heights!</p>
+                </div>
+
+                <!-- Top Middle: Stats Card -->
+                <div class="bento-card bento-stat">
+                    <div class="bento-number">500+</div>
+                    <p class="bento-label">Tours Completed</p>
+                    <a href="contact.html" class="bento-btn">Book a Trip <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Top Right: Stats Card -->
+                <div class="bento-card bento-stat">
+                    <div class="bento-number">150+</div>
+                    <p class="bento-label">Destinations</p>
+                    <a href="tours.html" class="bento-btn">View full map <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Bottom Left: Photo Card -->
+                <div class="bento-card bento-photo"></div>
+
+                <!-- Bottom Right: Customers Card -->
+                <div class="bento-card bento-customers">
+                    <div class="bento-number">5000+</div>
+                    <p class="bento-label">Happy Customers</p>
+                    <div class="avatar-group">
+                        <img src="assets/images/tour-guide-1.jpg" class="avatar" alt="Traveler 1">
+                        <img src="assets/images/tour-guide-2.jpg" class="avatar" alt="Traveler 2">
+                        <img src="assets/images/tour-guide-3.jpg" class="avatar" alt="Traveler 3">
+                        <img src="assets/images/tour-guide-1.jpg" class="avatar" alt="Traveler 4">
+                        <div class="avatar"
+                            style="background: var(--gray-200); display: flex; align-items: center; justify-content: center; color: var(--gray-600); font-size: 0.8rem; font-weight: 600;">
+                            +2k</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Highlight Section -->
+    <section class="featured-highlight">
+        <div class="container">
+            <div class="featured-wrapper">
+                <div class="featured-bg" style="background-image: url('assets/images/ella.jpg');">
+                    <span class="featured-badge"><i class="fas fa-star"></i> Recommended</span>
+                </div>
+                <div class="featured-card">
+                    <div class="featured-content">
+                        <h3>Ella, Sri Lanka</h3>
+                        <p>Step into postcard-perfect views of the landscape with our 5-day package to Ella's stunning
+                            Nine Arch Bridge. Enjoy misty hills, tea plantations, and delicious Sri Lankan cuisine.</p>
+                    </div>
+                    <div class="featured-thumb">
+                        <img src="assets/images/tour-hero.jpg" alt="Ella Scenery">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section (Center Layout) -->
+    <section class="why-us-section">
+        <div class="container">
+            <div class="values-center-layout">
+                <!-- Left Column -->
+                <div class="values-col-side">
+                    <!-- Transparent Pricing -->
+                    <div class="value-card-minimal">
+                        <div class="minimal-icon-box" style="background-color: #FFF4E6; color: #FF8C00;">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <h3>Transparent Pricing</h3>
+                        <p>No hidden fees or surprises. What you see is what you pay.</p>
+                    </div>
+                    <!-- Easy Booking -->
+                    <div class="value-card-minimal">
+                        <div class="minimal-icon-box" style="background-color: #E6F4FF; color: #007BFF;">
+                            <i class="fas fa-mouse-pointer"></i>
+                        </div>
+                        <h3>Easy Booking</h3>
+                        <p>Seamless online booking process to secure your ride in minutes.</p>
+                    </div>
+                </div>
+
+                <!-- Center Column -->
+                <div class="values-col-center">
+                    <h2 class="section-title-large">Why Choose Us?</h2>
+                    <p class="section-subtitle-large">We believe that every journey should be an unforgettable
+                        adventure. Experience the best of Sri Lanka with us.</p>
+                    <a href="contact.html" class="btn-outline-modern">Plan Your Trip <i
+                            class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Right Column -->
+                <div class="values-col-side">
+                    <!-- 24/7 Support -->
+                    <div class="value-card-minimal">
+                        <div class="minimal-icon-box" style="background-color: #E6FFFA; color: #00BFA5;">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>24/7 Support</h3>
+                        <p>Our dedicated support team is available round the clock to assist you.</p>
+                    </div>
+                    <!-- Secure Payments -->
+                    <div class="value-card-minimal">
+                        <div class="minimal-icon-box" style="background-color: #FFF0F5; color: #FF69B4;">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3>Secure Payments</h3>
+                        <p>Safe and secure payment methods for your peace of mind.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <!-- FAQ Section Redesign -->
+    <section class="faq-redesign-section">
+        <div class="container">
+            <div class="faq-grid">
+                <!-- Left Column: Header + CTA -->
+                <div class="faq-left-col">
+                    <div class="faq-label"><span class="red-dot"></span> FAQs</div>
+                    <h2 class="faq-heading">Frequently Asked<br>Questions</h2>
+
+                    <div class="faq-cta-card">
+                        <div class="cta-avatar">
+                            <img src="assets/images/mahi-logo.png" alt="Support Team">
+                        </div>
+                        <h3>Book a 15 min call</h3>
+                        <p>If you have any questions, just book a 15-minute call with us before booking your tour.</p>
+                        <a href="contact.html" class="btn-book-call">Book a Free Call</a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Accordion -->
+                <div class="faq-right-col">
+                    <div class="faq-list-modern">
+                        <!-- Item 1 -->
+                        <div class="faq-item-modern active">
+                            <div class="faq-question-modern">
+                                How do I book a tour?
+                                <span class="faq-toggle-icon"><i class="fas fa-times"></i></span>
+                            </div>
+                            <div class="faq-answer-modern">
+                                <p>Simply navigate to our Tours page, select your preferred package, and click 'Book
+                                    Now'. You can also contact us directly via WhatsApp or email for custom itineraries.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="faq-item-modern">
+                            <div class="faq-question-modern">
+                                Can I customize my itinerary?
+                                <span class="faq-toggle-icon"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="faq-answer-modern">
+                                <p>Absolutely! We specialize in tailor-made tours. Let us know your interests, and we'll
+                                    craft the perfect journey for you.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="faq-item-modern">
+                            <div class="faq-question-modern">
+                                What is included in the tour cost?
+                                <span class="faq-toggle-icon"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="faq-answer-modern">
+                                <p>Our tour costs typically include the vehicle, fuel, driver accommodation/meals, and
+                                    insurance. Entrance tickets and guest meals are usually excluded unless specified.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="faq-item-modern">
+                            <div class="faq-question-modern">
+                                Do you provide airport transfers?
+                                <span class="faq-toggle-icon"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="faq-answer-modern">
+                                <p>Yes, we provide 24/7 airport pickup and drop-off services. Just share your flight
+                                    details with us, and our driver will be there to welcome you.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 5 -->
+                        <div class="faq-item-modern">
+                            <div class="faq-question-modern">
+                                Is it safe to travel in Sri Lanka?
+                                <span class="faq-toggle-icon"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="faq-answer-modern">
+                                <p>Yes, Sri Lanka is a safe destination for travelers. Our drivers are experienced
+                                    professionals who prioritize your safety and comfort at all times.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <!-- CTA Section Redesign -->
+    <section class="about-cta-redesign">
+        <div class="container">
+            <div class="cta-modern-card">
+                <div class="cta-content">
+                    <h2>Ready to Explore Sri Lanka?</h2>
+                    <p>Let us craft your perfect holiday experience with our tailored tour packages.</p>
+                    <a href="contact.html" class="btn-primary">Contact Us</a>
+                </div>
+                <div class="cta-visuals">
+                    <div class="cta-img-stack back">
+                        <img src="assets/images/sigiriya-fortress.png" alt="Sigiriya">
+                    </div>
+                    <div class="cta-img-stack front">
+                        <img src="assets/images/mirissa-beach.png" alt="Mirissa">
+                        <div class="play-icon-overlay"><i class="fas fa-play"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer Redesign -->
+    <footer class="footer-modern">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand-col">
+                    <img src="assets/images/mahi-logo.png" alt="Mahi Maps" class="footer-logo">
+                    <p>Travel beyond boundaries. Discover, connect, and experience the beautiful island of Sri Lanka
+                        with us.</p>
+                    <div class="social-links-minimal">
+                        <a href="https://www.facebook.com/share/1E5aVVFGKd/?mibextid=wwXIfr" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/mahimaps_?igsh=MTl1eWN0dmhsMzVzcw==" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="vehicles.html">Our Fleet</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Get in Touch</h4>
+                    <ul class="contact-list">
+                        <li><a href="tel:+94743592570">+94 74 359 2570</a></li>
+                        <li><a href="mailto:mahimapsinfo@gmail.com">mahimapsinfo@gmail.com</a></li>
+                        <li>Galle, Rathgama, Sri Lanka</li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Instagram Post</h4>
+                    <div class="insta-grid">
+                        <img src="assets/images/sigiriya-fortress.png" alt="Sri Lanka 1">
+                        <img src="assets/images/mirissa-beach.png" alt="Sri Lanka 2">
+                        <img src="assets/images/ella-nine-arch.png" alt="Sri Lanka 3">
+                        <img src="assets/images/tour-hero.jpg" alt="Sri Lanka 4">
+                        <img src="assets/images/gallery-hero.jpg" alt="Sri Lanka 5">
+                        <img src="assets/images/friends-together.png" alt="Sri Lanka 6">
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Copyright © Mahi Maps 2026. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/94743592570" class="whatsapp-float" target="_blank">
+        <span class="whatsapp-icon">💬</span>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

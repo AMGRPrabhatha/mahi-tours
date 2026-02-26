@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahi Maps - Explore Sri Lanka with Comfort & Trusted Drivers</title>
+    <meta name="description"
+        content="Premium cab service for Sri Lanka tours. Airport transfers, city tours, round tours with professional drivers. Mini cars, sedans, vans available.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .hero-enhanced {
+            position: relative;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('assets/images/hero-background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+
+        .hero-enhanced::before {
+            content: '';
+            position: absolute;
+            top: -1%;
+            left: -1%;
+            width: 102%;
+            height: 102%;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 5;
+        }
+
+        .booking-widget {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--white);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-2xl);
+            width: 90%;
+            max-width: 900px;
+            z-index: 100;
+        }
+
+        .booking-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr auto;
+            gap: var(--spacing-md);
+            align-items: end;
+        }
+
+        .booking-field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .booking-field label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray-700);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .booking-field label i {
+            color: var(--sunset-orange);
+        }
+
+        .booking-field input,
+        .booking-field select {
+            padding: 0.875rem;
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            transition: var(--transition-base);
+        }
+
+        .booking-field input:focus,
+        .booking-field select:focus {
+            outline: none;
+            border-color: var(--ocean-blue);
+        }
+
+        .booking-submit {
+            padding: 0.875rem 2rem;
+            background: var(--sunset-orange);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-base);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .booking-submit:hover {
+            background: var(--sunset-orange-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .services-enhanced {
+            padding: calc(var(--spacing-3xl) + 60px) 0 var(--spacing-3xl);
+        }
+
+        .section-label {
+            color: var(--sunset-orange);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.875rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .services-grid-enhanced {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-2xl);
+        }
+
+        .service-card-enhanced {
+            background: var(--white);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--gray-200);
+            transition: var(--transition-base);
+            text-align: center;
+        }
+
+        .service-card-enhanced:hover {
+            border-color: var(--sunset-orange);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+
+        .service-card-enhanced i {
+            font-size: 3rem;
+            color: var(--sunset-orange);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-card-enhanced h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--gray-900);
+        }
+
+        .service-card-enhanced p {
+            color: var(--gray-600);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .fleet-enhanced {
+            background: var(--gray-50);
+        }
+
+        .fleet-grid-enhanced {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-2xl);
+        }
+
+        .vehicle-card-enhanced {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-base);
+        }
+
+        .vehicle-card-enhanced:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .vehicle-image-enhanced {
+            height: 200px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .vehicle-image-enhanced img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .vehicle-info-enhanced {
+            padding: var(--spacing-md);
+        }
+
+        .vehicle-info-enhanced h3 {
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--gray-900);
+        }
+
+        .vehicle-info-enhanced p {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .vehicle-specs-enhanced {
+            display: flex;
+            justify-content: space-around;
+            padding-top: var(--spacing-sm);
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .vehicle-spec {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.875rem;
+            color: var(--gray-700);
+        }
+
+        .vehicle-spec i {
+            color: var(--ocean-blue);
+        }
+
+        .tour-highlights-enhanced {
+            padding: var(--spacing-3xl) 0;
+        }
+
+        .highlights-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .view-all-link {
+            color: var(--sunset-orange);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition-base);
+        }
+
+        .view-all-link:hover {
+            gap: 0.75rem;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .highlight-card {
+            position: relative;
+            height: 350px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .highlight-card:hover {
+            transform: scale(1.03);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .highlight-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .highlight-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: var(--spacing-lg);
+            color: var(--white);
+        }
+
+        .highlight-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .stats-section {
+            background: var(--gradient-primary);
+            padding: var(--spacing-3xl) 0;
+            color: var(--white);
+        }
+
+        .stats-grid-enhanced {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-xl);
+            text-align: center;
+        }
+
+        .stat-card {
+            padding: var(--spacing-lg);
+        }
+
+        .stat-card i {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            opacity: 0.9;
+        }
+
+        .stat-card h3 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 700;
+        }
+
+        .stat-card p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 968px) {
+            .booking-form {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid-enhanced {
+                grid-template-columns: 1fr;
+            }
+
+            .fleet-grid-enhanced {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid-enhanced {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .fleet-grid-enhanced {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid-enhanced {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="assets/images/mahi-logo.png" alt="Mahi Maps - Travel & Tour Sri Lanka" style="height: 45px;">
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="vehicles.html" class="nav-link">Vehicles</a></li>
+                <li><a href="tours.html" class="nav-link">Tours</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="vehicles.html#booking" class="btn-book-nav">Book Now</a>
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Enhanced Hero Section -->
+    <section class="hero-enhanced">
+        <div class="hero-slider">
+            <div class="hero-slide" style="background-image: url('assets/images/hero-background.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/hero-background-2.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/hero-background-3.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/hero-background-4.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('assets/images/hero-background-5.jpg');"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title animate-fade-in">Explore Sri Lanka with <span
+                    style="color: var(--sunset-orange);">Comfort</span><br>& Trusted Drivers</h1>
+            <p class="hero-subtitle animate-fade-in-delay">Experience the pearl of the Indian Ocean with our premium cab
+                services. Island-wide tours, professional drivers, unforgettable memories.</p>
+            <div class="hero-cta animate-fade-in-delay-2">
+                <a href="vehicles.html#booking" class="btn btn-primary">Book a Ride</a>
+                <a href="tours.html" class="btn btn-secondary">View Tours</a>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Offers for you Section -->
+    <section class="offers-section">
+        <div class="container">
+            <h2>Offers for you</h2>
+            <div class="offers-grid">
+                <!-- Offer 1 -->
+                <div class="offer-card">
+                    <div class="offer-badge">
+                        <i class="fas fa-fire"></i> Limited Time
+                    </div>
+                    <div class="offer-image"
+                        style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2.25rem; font-weight: 700;">
+                        50% OFF
+                    </div>
+                    <div class="offer-content">
+                        <h3 class="offer-title">2026 Adventure Starts Here!</h3>
+                        <p class="offer-description">Book your Sri Lanka tour package and save up to 50% on selected
+                            routes</p>
+                        <div class="offer-discount">Up to 50% off</div>
+                        <a href="tours.html" class="offer-cta">Book now!</a>
+                    </div>
+                </div>
+
+                <!-- Offer 2 -->
+                <div class="offer-card">
+                    <div class="offer-badge" style="background: #10b981;">
+                        <i class="fas fa-tag"></i> Best Deal
+                    </div>
+                    <div class="offer-image"
+                        style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2.25rem; font-weight: 700;">
+                        $80 OFF
+                    </div>
+                    <div class="offer-content">
+                        <h3 class="offer-title">Airport Transfer Special</h3>
+                        <p class="offer-description">Save $80 on round-trip airport transfers with luxury vehicles</p>
+                        <div class="offer-discount">$80 OFF</div>
+                        <a href="contact.html" class="offer-cta">Book now!</a>
+                    </div>
+                </div>
+
+                <!-- Offer 3 -->
+                <div class="offer-card">
+                    <div class="offer-badge" style="background: #6366f1;">
+                        <i class="fas fa-percent"></i> Now on sale
+                    </div>
+                    <div class="offer-image"
+                        style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 700;">
+                        30% OFF
+                    </div>
+                    <div class="offer-content">
+                        <h3 class="offer-title">Top travel deals</h3>
+                        <p class="offer-description">Hotels, experiences & more with exclusive partner discounts</p>
+                        <div class="offer-discount">Up to 30% off</div>
+                        <a href="tours.html" class="offer-cta">Explore deals</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Highlights Section -->
+    <section class="tour-highlights-section">
+        <div class="container">
+            <div class="tour-highlights-header">
+                <div>
+                    <p class="tour-highlights-subtitle">DISCOVER SRI LANKA</p>
+                    <h2 class="tour-highlights-title">Tour Highlights</h2>
+                </div>
+                <a href="tours.html" class="view-all-link">
+                    View All Packages →
+                </a>
+            </div>
+
+            <div class="tour-highlights-scroll">
+                <!-- Ella -->
+                <!-- Ella -->
+                <a href="tours.html#hill-country" class="tour-highlight-card" style="text-decoration: none;">
+                    <img src="assets/images/ella-nine-arch.png" alt="Ella, Sri Lanka" class="tour-highlight-image">
+                    <div class="tour-highlight-overlay">
+                        <h3 class="tour-highlight-name">Ella</h3>
+                        <p class="tour-highlight-activities">156 activities</p>
+                    </div>
+                </a>
+
+                <!-- Sigiriya -->
+                <!-- Sigiriya -->
+                <a href="tours.html#cultural-triangle" class="tour-highlight-card" style="text-decoration: none;">
+                    <img src="assets/images/sigiriya-fortress.png" alt="Sigiriya, Sri Lanka"
+                        class="tour-highlight-image">
+                    <div class="tour-highlight-overlay">
+                        <h3 class="tour-highlight-name">Sigiriya</h3>
+                        <p class="tour-highlight-activities">89 activities</p>
+                    </div>
+                </a>
+
+                <!-- Kandy -->
+                <!-- Kandy -->
+                <a href="tours.html#cultural-triangle" class="tour-highlight-card" style="text-decoration: none;">
+                    <img src="assets/images/kandy-temple.png" alt="Kandy, Sri Lanka" class="tour-highlight-image">
+                    <div class="tour-highlight-overlay">
+                        <h3 class="tour-highlight-name">Kandy</h3>
+                        <p class="tour-highlight-activities">124 activities</p>
+                    </div>
+                </a>
+
+                <!-- Yala National Park -->
+                <!-- Yala National Park -->
+                <a href="tours.html#wildlife-safari" class="tour-highlight-card" style="text-decoration: none;">
+                    <img src="assets/images/yala-national-park.png" alt="Yala National Park, Sri Lanka"
+                        class="tour-highlight-image">
+                    <div class="tour-highlight-overlay">
+                        <h3 class="tour-highlight-name">Yala National Park</h3>
+                        <p class="tour-highlight-activities">67 activities</p>
+                    </div>
+                </a>
+
+                <!-- Mirissa -->
+                <!-- Mirissa -->
+                <a href="tours.html#beach-coastal" class="tour-highlight-card" style="text-decoration: none;">
+                    <img src="assets/images/mirissa-beach.png" alt="Mirissa, Sri Lanka" class="tour-highlight-image">
+                    <div class="tour-highlight-overlay">
+                        <h3 class="tour-highlight-name">Mirissa</h3>
+                        <p class="tour-highlight-activities">98 activities</p>
+                    </div>
+                </a>
+
+                <!-- Galle -->
+                <!-- Galle -->
+                <a href="tours.html#beach-coastal" class="tour-highlight-card" style="text-decoration: none;">
+                    <img src="assets/images/galle-fort.png" alt="Galle, Sri Lanka" class="tour-highlight-image">
+                    <div class="tour-highlight-overlay">
+                        <h3 class="tour-highlight-name">Galle</h3>
+                        <p class="tour-highlight-activities">112 activities</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Top Destinations Section -->
+    <section class="top-destinations-section">
+        <div class="container">
+            <div class="destinations-header">
+                <h2 class="section-title-giant">Top Destinations <span class="d-block">For 2025</span></h2>
+                <p class="section-desc-right">From vibrant cities to secluded getaways, discover the most sought-after
+                    spots around the globe. Dive into experiences crafted for every type of traveler.</p>
+            </div>
+
+            <div class="destinations-grid">
+                <!-- Card 1: Sigiriya -->
+                <div class="destination-card">
+                    <div class="dest-image-box">
+                        <img src="assets/images/sigiriya-fortress.png" alt="Sigiriya">
+                    </div>
+                    <div class="dest-content-box">
+                        <h3>Ancient Marvels Await</h3>
+                        <div class="dest-btn-wrapper">
+                            <a href="tours.html" class="btn-explore-pill">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <p>From breathtaking rock fortresses to ancient ruins, explore the rich history of Sri Lanka.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Ella -->
+                <div class="destination-card">
+                    <div class="dest-image-box">
+                        <img src="assets/images/tour-hero.jpg" alt="Ella">
+                    </div>
+                    <div class="dest-content-box">
+                        <h3>Discover the Pulse of Nature</h3>
+                        <div class="dest-btn-wrapper">
+                            <a href="tours.html" class="btn-explore-pill">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <p>Dive into Ella's blend of misty mountains and lush tea plantations. Explore buzzing cafes and
+                            awe-inspiring views.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Services Section -->
+    <section class="services-enhanced">
+        <div class="container">
+            <div class="services-layout">
+                <!-- Left Sidebar -->
+                <div class="services-sidebar">
+                    <p class="services-label">ABOUT</p>
+                    <h2 class="services-heading">Need Amazing Tour?</h2>
+                    <p class="services-description">Experience the best travel services in Sri Lanka with our premium
+                        fleet and professional drivers. We provide comfortable, safe, and reliable transportation
+                        solutions tailored to your needs, ensuring unforgettable journeys across the beautiful island.
+                    </p>
+                    <a href="contact.html" class="services-cta-btn">LEARN MORE</a>
+                </div>
+
+                <!-- Right Grid -->
+                <div class="services-cards-grid">
+                    <div class="service-card-new">
+                        <div class="service-icon-circle blue">
+                            <i class="fas fa-plane-departure"></i>
+                        </div>
+                        <h3>Airport Transfers</h3>
+                        <p>Seamless pickups and drop-offs at all Sri Lankan airports with meet-and-greet service.</p>
+                    </div>
+
+                    <div class="service-card-new">
+                        <div class="service-icon-circle green">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3>Island-wide Tours</h3>
+                        <p>Explore every corner of Sri Lanka with our exciting cultural and wildlife tours.</p>
+                    </div>
+
+                    <div class="service-card-new">
+                        <div class="service-icon-circle pink">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>Corporate Travel</h3>
+                        <p>Professional transportation for business travelers with premium vehicles.</p>
+                    </div>
+
+                    <div class="service-card-new">
+                        <div class="service-icon-circle purple">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h3>Custom Packages</h3>
+                        <p>Tailored travel solutions designed specifically for your unique requirements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Gallery Section -->
+    <section class="recent-gallery-section" style="padding-bottom: 0;">
+        <div class="container">
+            <div class="section-header-center">
+                <p class="script-subtitle">Make Your Tour More Pleasure</p>
+                <h2 class="section-title">Recent Gallery</h2>
+            </div>
+            <div class="gallery-modern-grid">
+                <!-- Col 1 (Left Single) -->
+                <div class="gallery-col col-1">
+                    <img src="assets/images/friends-together.png" class="gallery-img" alt="Tour Moment">
+                </div>
+
+                <!-- Col 2 (Left Stacked) -->
+                <div class="gallery-col col-stacked">
+                    <img src="assets/images/ella-nine-arch.png" class="gallery-img" alt="Ella">
+                    <img src="assets/images/sigiriya-fortress.png" class="gallery-img" alt="Sigiriya">
+                </div>
+
+                <!-- Col 3 (Center Tall) -->
+                <div class="gallery-col col-center">
+                    <img src="assets/images/tour-hero.jpg" class="gallery-img tall" alt="Highlight">
+                </div>
+
+                <!-- Col 4 (Right Stacked) -->
+                <div class="gallery-col col-stacked">
+                    <img src="assets/images/kandy-temple.png" class="gallery-img" alt="Kandy">
+                    <img src="assets/images/mirissa-beach.png" class="gallery-img" alt="Mirissa">
+                </div>
+
+                <!-- Col 5 (Right Single) -->
+                <div class="gallery-col col-5">
+                    <img src="assets/images/yala-national-park.png" class="gallery-img" alt="Yala">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Vehicle Fleet -->
+    <section class="fleet-enhanced">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">CHOOSE YOUR RIDE</p>
+                <h2 class="section-title">Our Vehicle Fleet</h2>
+            </div>
+            <div class="fleet-grid-enhanced">
+                <!-- Mini Car -->
+                <div class="vehicle-card-enhanced">
+                    <div class="vehicle-image-enhanced"
+                        style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+                        <img src="assets/images/mini-car.jpg" alt="Mini Car">
+                    </div>
+                    <div class="vehicle-info-enhanced">
+                        <h3>Mini Car</h3>
+                        <p>Perfect for couples or solo travelers</p>
+                        <div class="vehicle-specs-enhanced">
+                            <span class="vehicle-spec"><i class="fas fa-users"></i> 2</span>
+                            <span class="vehicle-spec"><i class="fas fa-suitcase"></i> 2</span>
+                            <span class="vehicle-spec"><i class="fas fa-snowflake"></i> AC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sedan -->
+                <div class="vehicle-card-enhanced">
+                    <div class="vehicle-image-enhanced"
+                        style="background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);">
+                        <img src="assets/images/sedan.jpg" alt="Sedan">
+                    </div>
+                    <div class="vehicle-info-enhanced">
+                        <h3>Sedan</h3>
+                        <p>Comfortable for small families</p>
+                        <div class="vehicle-specs-enhanced">
+                            <span class="vehicle-spec"><i class="fas fa-users"></i> 4</span>
+                            <span class="vehicle-spec"><i class="fas fa-suitcase"></i> 3</span>
+                            <span class="vehicle-spec"><i class="fas fa-snowflake"></i> AC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mini Van -->
+                <div class="vehicle-card-enhanced">
+                    <div class="vehicle-image-enhanced"
+                        style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);">
+                        <img src="assets/images/mini-van.jpg" alt="Mini Van">
+                    </div>
+                    <div class="vehicle-info-enhanced">
+                        <h3>Mini Van</h3>
+                        <p>Spacious for group travel</p>
+                        <div class="vehicle-specs-enhanced">
+                            <span class="vehicle-spec"><i class="fas fa-users"></i> 7</span>
+                            <span class="vehicle-spec"><i class="fas fa-suitcase"></i> 5</span>
+                            <span class="vehicle-spec"><i class="fas fa-snowflake"></i> AC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- High Roof Van -->
+                <div class="vehicle-card-enhanced">
+                    <div class="vehicle-image-enhanced"
+                        style="background: linear-gradient(135deg, #1f2937 0%, #374151 100%);">
+                        <img src="assets/images/high-roof.jpg" alt="High Roof Van">
+                    </div>
+                    <div class="vehicle-info-enhanced">
+                        <h3>High Roof Van</h3>
+                        <p>Premium comfort for large groups</p>
+                        <div class="vehicle-specs-enhanced">
+                            <span class="vehicle-spec"><i class="fas fa-users"></i> 12</span>
+                            <span class="vehicle-spec"><i class="fas fa-suitcase"></i> 8</span>
+                            <span class="vehicle-spec"><i class="fas fa-snowflake"></i> AC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Highlights -->
+    <!-- <section class="tour-highlights-enhanced">
+        <div class="container">
+            <div class="highlights-header">
+                <div>
+                    <p class="section-label">DISCOVER SRI LANKA</p>
+                    <h2 class="section-title">Tour Highlights</h2>
+                    <p class="section-subtitle">Most popular destinations for travelers</p>
+                </div>
+                <a href="tours.html" class="view-all-link">
+                    View All Packages <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div
+                        style="width: 100%; height: 100%; background: linear-gradient(135deg, #059669 0%, #10b981 100%); display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-bridge" style="font-size: 6rem; color: white; opacity: 0.3;"></i>
+                    </div>
+                    <div class="highlight-overlay">
+                        <h3>Ella</h3>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <div
+                        style="width: 100%; height: 100%; background: linear-gradient(135deg, #f97316 0%, #fb923c 100%); display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-elephant" style="font-size: 6rem; color: white; opacity: 0.3;"></i>
+                    </div>
+                    <div class="highlight-overlay">
+                        <h3>Yala National Park</h3>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <div
+                        style="width: 100%; height: 100%; background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%); display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-landmark" style="font-size: 6rem; color: white; opacity: 0.3;"></i>
+                    </div>
+                    <div class="highlight-overlay">
+                        <h3>Galle</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Itinerary Inspiration Section -->
+    <section class="itinerary-inspiration-section">
+        <div class="container">
+            <h2 class="itinerary-inspiration-title">Inspiration for your itinerary</h2>
+
+            <div class="itinerary-scroll">
+                <!-- Fun family activities -->
+                <div class="itinerary-card">
+                    <img src="assets/images/family-activities.png" alt="Fun family activities" class="itinerary-image">
+                    <div class="itinerary-overlay">
+                        <div>
+                            <h3 class="itinerary-card-title">Fun family activities</h3>
+                            <p class="itinerary-card-description">Enjoy a fun day out with the family at these
+                                activities</p>
+                        </div>
+                        <a href="tours.html" class="itinerary-cta-btn">See activities</a>
+                    </div>
+                </div>
+
+                <!-- Unique Adventures -->
+                <div class="itinerary-card">
+                    <img src="assets/images/unique-adventures.png" alt="Unique Adventures" class="itinerary-image">
+                    <div class="itinerary-overlay">
+                        <div>
+                            <h3 class="itinerary-card-title">Unique Adventures</h3>
+                            <p class="itinerary-card-description">Don't enjoy planning? Explore these all-inclusive
+                                packages</p>
+                        </div>
+                        <a href="tours.html" class="itinerary-cta-btn">See activities</a>
+                    </div>
+                </div>
+
+                <!-- Weekend Adventures -->
+                <div class="itinerary-card">
+                    <img src="assets/images/weekend-adventures.png" alt="Weekend Adventures" class="itinerary-image">
+                    <div class="itinerary-overlay">
+                        <div>
+                            <h3 class="itinerary-card-title">Weekend Adventures</h3>
+                            <p class="itinerary-card-description">Get your weekend wind-down fix with these fun
+                                activities</p>
+                        </div>
+                        <a href="tours.html" class="itinerary-cta-btn">See activities</a>
+                    </div>
+                </div>
+
+                <!-- Friends together -->
+                <div class="itinerary-card">
+                    <img src="assets/images/friends-together.png" alt="Friends together" class="itinerary-image">
+                    <div class="itinerary-overlay">
+                        <div>
+                            <h3 class="itinerary-card-title">Friends together</h3>
+                            <p class="itinerary-card-description">Have fun with your friends. Create good memories
+                                and...</p>
+                        </div>
+                        <a href="tours.html" class="itinerary-cta-btn">See activities</a>
+                    </div>
+                </div>
+
+                <!-- Nature and outdoors -->
+                <div class="itinerary-card">
+                    <div class="itinerary-image" style="background: linear-gradient(135deg, #14b8a6 0%, #0891b2 100%);">
+                    </div>
+                    <div class="itinerary-overlay">
+                        <div>
+                            <h3 class="itinerary-card-title">Nature and outdoors</h3>
+                            <p class="itinerary-card-description">Time to head outdoors for some fresh air and...</p>
+                        </div>
+                        <a href="tours.html" class="itinerary-cta-btn">See activities</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Testimonials -->
+    <section class="testimonials-circular">
+        <div class="testimonials-circular-container">
+            <div class="section-header">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-subtitle">Real stories from real people! See how our services<br>have transformed
+                    their experiences.</p>
+                <!-- <a href="contact.html" class="testimonial-cta-btn">Book Now</a> -->
+            </div>
+
+            <div class="avatars-circle">
+                <div class="avatar-item avatar-1">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer">
+                    <div class="avatar-ring"></div>
+                </div>
+                <div class="avatar-item avatar-2">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer">
+                    <div class="avatar-ring"></div>
+                </div>
+                <div class="avatar-item avatar-3 active">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer">
+                    <div class="avatar-ring active-ring"></div>
+                </div>
+                <div class="avatar-item avatar-4">
+                    <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Customer">
+                    <div class="avatar-ring"></div>
+                </div>
+                <div class="avatar-item avatar-5">
+                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Customer">
+                    <div class="avatar-ring"></div>
+                </div>
+                <div class="avatar-item avatar-6">
+                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Customer">
+                    <div class="avatar-ring"></div>
+                </div>
+                <div class="dot dot-1"></div>
+                <div class="dot dot-2"></div>
+                <div class="dot dot-3"></div>
+                <div class="dot dot-4"></div>
+            </div>
+
+            <div class="testimonial-content-wrapper">
+                <button class="nav-arrow prev-arrow" id="prevTestimonial">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div class="testimonial-text-center">
+                    <p class="testimonial-slide active" data-index="0">"Our driver was incredibly knowledgeable and
+                        friendly. The 7-day tour was perfectly organized. Highly recommend Mahi Maps!"</p>
+                    <p class="testimonial-slide" data-index="1">"Punctual airport pickup, comfortable van, and the best
+                        tour guide. Made our family vacation unforgettable!"</p>
+                    <p class="testimonial-slide" data-index="2">"Excellent service from booking to drop-off. The custom
+                        tour was exactly what we wanted. Will definitely book again!"</p>
+                    <p class="testimonial-slide" data-index="3">"Amazing experience exploring Sri Lanka! The driver was
+                        professional and the vehicle was spotless. Exceeded all expectations!"</p>
+                </div>
+
+                <button class="nav-arrow next-arrow" id="nextTestimonial">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer Redesign -->
+    <footer class="footer-modern">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand-col">
+                    <img src="assets/images/mahi-logo.png" alt="Mahi Maps" class="footer-logo">
+                    <p>Travel beyond boundaries. Discover, connect, and experience the beautiful island of Sri Lanka
+                        with us.</p>
+                    <div class="social-links-minimal">
+                        <a href="https://www.facebook.com/share/1E5aVVFGKd/?mibextid=wwXIfr" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/mahimaps_?igsh=MTl1eWN0dmhsMzVzcw==" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="vehicles.html">Our Fleet</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Get in Touch</h4>
+                    <ul class="contact-list">
+                        <li><a href="tel:+94743592570">+94 74 359 2570</a></li>
+                        <li><a href="mailto:mahimapsinfo@gmail.com">mahimapsinfo@gmail.com</a></li>
+                        <li>Galle, Rathgama, Sri Lanka</li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Instagram Post</h4>
+                    <div class="insta-grid">
+                        <img src="assets/images/sigiriya-fortress.png" alt="Sri Lanka 1">
+                        <img src="assets/images/mirissa-beach.png" alt="Sri Lanka 2">
+                        <img src="assets/images/ella-nine-arch.png" alt="Sri Lanka 3">
+                        <img src="assets/images/tour-hero.jpg" alt="Sri Lanka 4">
+                        <img src="assets/images/gallery-hero.jpg" alt="Sri Lanka 5">
+                        <img src="assets/images/friends-together.png" alt="Sri Lanka 6">
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Copyright © Mahi Maps 2026. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/94743592570" class="whatsapp-float" target="_blank">
+        <span class="whatsapp-icon">💬</span>
+    </a>
+
+    <script src="script.js"></script>
+    <script>
+        // Quick Booking Form Handler
+        document.getElementById('quickBookingForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Booking request submitted! We will contact you shortly.');
+        });
+    </script>
+</body>
+
+</html>

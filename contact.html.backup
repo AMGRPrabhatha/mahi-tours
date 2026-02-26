@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Ceylon Cabs | Book Your Sri Lanka Tour</title>
+    <meta name="description"
+        content="Contact Ceylon Cabs for bookings, inquiries, and custom tour planning. Available 24/7 via phone, email, or WhatsApp.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .contact-hero {
+            position: relative;
+            height: 40vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/contact-hero.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .contact-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-hero p {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+            align-items: start;
+        }
+
+        /* Modern Contact Info Styles */
+        .contact-info-modern {
+            background: var(--white);
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-info-title {
+            font-size: 1.75rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--gray-900);
+            font-weight: 700;
+        }
+
+        .contact-info-subtitle {
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-xl);
+            font-size: 1rem;
+        }
+
+        .contact-cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            flex: 1;
+        }
+
+        .contact-card {
+            background: #f9fafb;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            border-color: var(--ocean-blue);
+        }
+
+        .contact-card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-sm);
+            transition: all 0.3s ease;
+        }
+
+        .phone-icon {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+        }
+
+        .whatsapp-icon {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+        }
+
+        .email-icon {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+        }
+
+        .location-icon {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+        }
+
+        .contact-card:hover .contact-card-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .contact-card-content h3 {
+            font-size: 1rem;
+            color: var(--gray-900);
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+        }
+
+        .contact-link {
+            display: block;
+            color: var(--ocean-blue);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--ocean-blue-dark);
+            text-decoration: underline;
+        }
+
+        .contact-address {
+            color: var(--gray-700);
+            line-height: 1.5;
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+        }
+
+        .contact-card-desc {
+            color: var(--gray-600);
+            font-size: 0.8rem;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        /* Quick Response Badge */
+        .quick-response-badge {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #fbbf24;
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-top: auto;
+        }
+
+        .badge-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .badge-content h4 {
+            color: #92400e;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+            font-weight: 700;
+        }
+
+        .badge-content p {
+            color: #78350f;
+            font-size: 0.8rem;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-form h2 {
+            font-size: 1.75rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--gray-900);
+            position: relative;
+            padding-bottom: var(--spacing-sm);
+        }
+
+        .contact-form h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--ocean-blue);
+            border-radius: 2px;
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gray-700);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f9fafb;
+        }
+
+        .form-group input:hover,
+        .form-group textarea:hover,
+        .form-group select:hover {
+            border-color: #d1d5db;
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--ocean-blue);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1);
+        }
+
+        .form-group input:focus+label,
+        .form-group textarea:focus+label,
+        .form-group select:focus+label {
+            color: var(--ocean-blue);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+        }
+
+        .map-container {
+            height: 400px;
+            background: var(--gray-200);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-top: var(--spacing-2xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-600);
+        }
+
+        .quick-response {
+            background: var(--sand-beige);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-sm);
+            margin-top: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .quick-response p {
+            color: var(--gray-700);
+            font-weight: 600;
+        }
+
+
+        /* FAQ Section Styles */
+        .faq-section {
+            padding: var(--spacing-3xl) 0;
+            background: #f8f9fa;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-md);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: var(--spacing-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            text-align: left;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #f8f9fa;
+        }
+
+        .faq-question span {
+            flex: 1;
+            padding-right: var(--spacing-md);
+        }
+
+        .faq-icon {
+            font-size: 1rem;
+            color: var(--ocean-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-question {
+            background: #f0f9ff;
+            color: var(--ocean-blue);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 var(--spacing-lg) var(--spacing-lg);
+        }
+
+        .faq-answer p {
+            color: var(--gray-600);
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* Animation for FAQ items on load */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .faq-item {
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .faq-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .faq-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .faq-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .faq-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .faq-item:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .faq-item:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        @media (max-width: 968px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-question {
+                font-size: 1rem;
+                padding: var(--spacing-md);
+            }
+
+            .faq-item.active .faq-answer {
+                padding: 0 var(--spacing-md) var(--spacing-md);
+            }
+
+            .contact-cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-response-badge {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="assets/images/mahi-logo.png" alt="Mahi Maps - Travel & Tour Sri Lanka" style="height: 45px;">
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="vehicles.html" class="nav-link">Vehicles</a></li>
+                <li><a href="tours.html" class="nav-link">Tours</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Get in Touch</h1>
+            <p style="font-size: 1.25rem; opacity: 0.95;">We're here to help plan your perfect Sri Lanka journey</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section>
+        <div class="container">
+            <div class="contact-container">
+                <!-- Company Information --\u003e
+                <div class="contact-info-modern">
+                    <h2 class="contact-info-title">Company information</h2>
+                    <p class="contact-info-subtitle">Get in touch with us through any of these channels</p>
+
+                    <div class="contact-cards-grid">
+                        <!-- Phone Card -->
+                <div class="contact-card">
+                    <div class="contact-card-icon phone-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-card-content">
+                        <h3>Phone</h3>
+                        <p class="contact-value">0123 456 789</p>
+                    </div>
+                </div>
+
+                <!-- Address Card -->
+                <div class="contact-card">
+                    <div class="contact-card-icon location-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-card-content">
+                        <h3>Address</h3>
+                        <p class="contact-value">8420 Brandon Ford</p>
+                    </div>
+                </div>
+
+                <!-- Email Card -->
+                <div class="contact-card">
+                    <div class="contact-card-icon email-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-card-content">
+                        <h3>Email</h3>
+                        <p class="contact-value">demo@jan@design.com</p>
+                    </div>
+                </div>
+
+                <!-- Visit us Card -->
+                <div class="contact-card">
+                    <div class="contact-card-icon visit-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="contact-card-content">
+                        <h3>Visit us</h3>
+                        <p class="contact-value">Nesoya.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+            <h2>Send Us a Message</h2>
+            <form id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Enter your full name</label>
+                        <input type="text" id="name" name="name" required placeholder="John C">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Enter your email address</label>
+                        <input type="email" id="email" name="email" required placeholder="demo@jan@design.com">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+1 234 567 8900">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Type</label>
+                        <select id="service" name="service">
+                            <option value="">Select a service</option>
+                            <option value="airport">Airport Transfer</option>
+                            <option value="city">City Tour</option>
+                            <option value="round">Round Tour</option>
+                            <option value="custom">Custom Tour</option>
+                            <option value="other">Other Inquiry</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pickup">Pickup Location</label>
+                    <input type="text" id="pickup" name="pickup" placeholder="e.g., Colombo Airport, Hotel Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Message *</label>
+                    <textarea id="message" name="message" required
+                        placeholder="Tell us about your travel plans, preferred dates, number of passengers, or any special requirements..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+            </form>
+        </div>
+        </div>
+
+        <!-- Map -->
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4046288.5440673437!2d78.0430654!3d7.873053999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2593cf65a1e9d%3A0xe13da4b400e2d38c!2sSri%20Lanka!5e0!3m2!1sen!2slk!4v1707177600000!5m2!1sen!2slk"
+                width="100%" height="100%" style="border:0; border-radius: var(--radius-lg);" allowfullscreen=""
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        </div>
+    </section>
+
+    <!-- Why Contact Us -->
+    <section style="background: var(--gray-50);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Book With Us?</h2>
+                <p class="section-subtitle">Experience the Ceylon Cabs difference</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Instant Confirmation</h3>
+                    <p>Get immediate booking confirmation and detailed itinerary via email or WhatsApp.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💰</div>
+                    <h3>Best Price Guarantee</h3>
+                    <p>Competitive rates with no hidden charges. What you see is what you pay.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Flexible Cancellation</h3>
+                    <p>Free cancellation up to 24 hours before your scheduled pickup time.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Personalized Service</h3>
+                    <p>Every tour is customized to match your interests, pace, and preferences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Quick answers to common questions</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How do I book a cab or tour?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>You can book via phone, WhatsApp, email, or by filling out the contact form above. We'll
+                            respond quickly with availability and pricing.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What payment methods do you accept?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We accept cash (USD, EUR, LKR), bank transfers, and major credit cards. Payment can be made
+                            before or after your tour.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Are your drivers English-speaking?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! All our drivers speak English fluently and many also speak other languages. They're
+                            knowledgeable about Sri Lankan history and culture.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can I customize my tour itinerary?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely! We specialize in custom tours. Tell us your interests and we'll create a
+                            personalized itinerary just for you.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What is your cancellation policy?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Free cancellation up to 24 hours before your scheduled pickup. Cancellations within 24 hours
+                            may incur a 50% charge.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Do you provide child seats?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, we provide complimentary child seats upon request. Please mention this when booking so
+                            we can prepare accordingly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="assets/images/mahi-logo.png" alt="Mahi Maps - Travel & Tour Sri Lanka"
+                            style="height: 50px;">
+                    </div>
+                    <p>Your trusted partner for exploring the beautiful island of Sri Lanka. Comfort, safety, and
+                        unforgettable experiences.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="vehicles.html">Our Fleet</a></li>
+                        <li><a href="tours.html">Tour Packages</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Airport Transfer</a></li>
+                        <li><a href="tours.html">City Tours</a></li>
+                        <li><a href="tours.html">Round Tours</a></li>
+                        <li><a href="contact.html">Custom Tours</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-contact">
+                        <li>📞 +94 77 123 4567</li>
+                        <li>📧 info@ceyloncabs.lk</li>
+                        <li>📍 Colombo, Sri Lanka</li>
+                        <li>🕐 24/7 Available</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Ceylon Cabs. All rights reserved.</p>
+                <div class="footer-badges">
+                    <span class="trust-badge">🛡️ Licensed</span>
+                    <span class="trust-badge">✅ Insured</span>
+                    <span class="trust-badge">⭐ 5-Star Rated</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/94771234567" class="whatsapp-float" target="_blank">
+        <span class="whatsapp-icon">💬</span>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

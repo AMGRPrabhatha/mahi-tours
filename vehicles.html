@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Vehicles - Mahi Maps | Premium Fleet for Sri Lanka Tours</title>
+    <meta name="description"
+        content="Choose from our fleet of mini cars, sedans, mini vans, and high roof vans. All vehicles with AC and professional drivers.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Compact Vehicle Cards - Tour Style */
+        .vehicles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .vehicle-card-modern {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+        }
+
+        .vehicle-card-modern:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .vehicle-card-image-wrapper {
+            position: relative;
+            height: 160px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .vehicle-card-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .vehicle-card-modern:hover .vehicle-card-image-wrapper img {
+            transform: scale(1.08);
+        }
+
+        .vehicle-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--ocean-blue);
+            color: var(--white);
+            padding: 0.35rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .vehicle-badge.popular {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .vehicle-badge.value {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .vehicle-badge.premium {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .vehicle-card-content {
+            padding: var(--spacing-md);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .vehicle-card-header {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .vehicle-card-header h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 0.25rem;
+        }
+
+        .vehicle-card-header p {
+            color: var(--gray-600);
+            line-height: 1.4;
+            font-size: 0.75rem;
+        }
+
+        /* Compact Specs Grid */
+        .vehicle-specs-compact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .spec-item-compact {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.4rem;
+        }
+
+        .spec-icon-compact {
+            font-size: 1rem;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .spec-text-compact {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .spec-text-compact .label {
+            font-size: 0.6rem;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            font-weight: 600;
+        }
+
+        .spec-text-compact .value {
+            font-size: 0.75rem;
+            color: var(--gray-900);
+            font-weight: 600;
+        }
+
+        /* Compact Features */
+        .vehicle-features-compact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .feature-tag-compact {
+            background: var(--sand-beige);
+            color: var(--gray-800);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.2rem;
+            transition: all 0.2s ease;
+        }
+
+        .feature-tag-compact:hover {
+            background: var(--ocean-blue);
+            color: var(--white);
+        }
+
+        .vehicle-card-footer {
+            margin-top: auto;
+        }
+
+        .btn-book-vehicle {
+            width: 100%;
+            background: var(--ocean-blue);
+            color: var(--white);
+            padding: 0.65rem;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-book-vehicle:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+        }
+
+        /* Section Header */
+        .vehicles-section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .vehicles-section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .vehicles-section-header p {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1024px) {
+            .vehicles-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .vehicles-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+
+            .vehicle-card-image-wrapper {
+                height: 140px;
+            }
+
+            .vehicles-section-header h2 {
+                font-size: 2rem;
+            }
+
+            .vehicle-card-header h3 {
+                font-size: 1.1rem;
+            }
+
+            .vehicle-specs-compact {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== BOOKING FORM SECTION ===== */
+        .booking-form-section {
+            padding: var(--spacing-2xl) 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 20%, #f5f7fa 100%);
+        }
+
+        .booking-form-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .booking-form-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .booking-form-header p {
+            font-size: 1rem;
+            color: var(--gray-600);
+        }
+
+        .taxi-booking-form {
+            background: var(--white);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group-full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 0.35rem;
+            font-size: 0.9rem;
+        }
+
+        .required {
+            color: #ef4444;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.65rem 0.875rem;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--ocean-blue);
+            box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--gray-400);
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234b5563' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        /* Form Validation States */
+        .form-group input:invalid:not(:placeholder-shown),
+        .form-group select:invalid:not(:placeholder-shown) {
+            border-color: #ef4444;
+        }
+
+        .form-group input:valid:not(:placeholder-shown),
+        .form-group select:valid {
+            border-color: #10b981;
+        }
+
+        /* Submit Button */
+        .form-submit {
+            display: flex;
+            justify-content: center;
+            margin-top: var(--spacing-lg);
+        }
+
+        .btn-submit-booking {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 2.5rem;
+            background: var(--gradient-primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-lg);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-submit-booking:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .btn-submit-booking:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-submit-booking svg {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-submit-booking:hover svg {
+            transform: translateX(5px);
+        }
+
+        /* Responsive Design for Form */
+        @media (max-width: 768px) {
+            .booking-form-section {
+                padding: var(--spacing-2xl) 0;
+            }
+
+            .booking-form-header h2 {
+                font-size: 2rem;
+            }
+
+            .taxi-booking-form {
+                padding: var(--spacing-xl);
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+
+            .btn-submit-booking {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Form Feedback Messages */
+        .form-feedback {
+            margin-top: var(--spacing-lg);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            animation: slideDown 0.3s ease;
+        }
+
+        .form-feedback.success {
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            color: #065f46;
+        }
+
+        .form-feedback.error {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #991b1b;
+        }
+
+        .feedback-content {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .feedback-icon {
+            font-size: 1.5rem;
+        }
+
+        .feedback-message {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .spinner {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Disabled button state */
+        .btn-submit-booking:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="assets/images/mahi-logo.png" alt="Mahi Maps - Travel & Tour Sri Lanka" style="height: 45px;">
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="vehicles.html" class="nav-link active">Vehicles</a></li>
+                <li><a href="tours.html" class="nav-link">Tours</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="vehicles.html#booking" class="btn-book-nav">Book Now</a>
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Vehicles Hero Redesign -->
+    <!-- Vehicles Hero Redesign (Split Layout) -->
+    <section class="hero-split-modern">
+        <div class="container">
+            <div class="hero-split-grid">
+                <!-- Left: Content -->
+                <div class="hero-split-content">
+                    <h1 class="hero-split-title">Travel in Comfort<br>& Style</h1>
+                    <p class="hero-split-desc">
+                        Choose from our premium fleet of vehicles. Whether you're a solo traveler, a couple, or a large
+                        group, we have the perfect ride for your Sri Lankan adventure.
+                    </p>
+                    <div class="hero-split-buttons">
+                        <a href="contact.html" class="btn-primary-black">Book a Ride</a>
+                        <a href="#fleet" class="btn-secondary-outline">View Fleet</a>
+                    </div>
+                </div>
+
+                <!-- Right: Image Grid -->
+                <div class="hero-split-images">
+                    <div class="hero-img-col">
+                        <img src="assets/images/sedan.jpg" class="hero-img-card" alt="Luxury Sedan">
+                        <img src="assets/images/mini-van.jpg" class="hero-img-card" alt="Comfortable Mini Van">
+                    </div>
+                    <div class="hero-img-col offset-top">
+                        <img src="assets/images/mini-car.jpg" class="hero-img-card" alt="Compact Car">
+                        <!-- Reusing a scenic shot or another vehicle if available -->
+                        <img src="assets/images/high-roof.jpg" class="hero-img-card" alt="Spacious High Roof Van">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Auto-Scroll Text Marquee -->
+    <div class="marquee-text-strip">
+        <div class="marquee-text-track">
+            <div class="marquee-text-content">
+                <span>NO HIDDEN FEES</span> <span class="separator">•</span>
+                <span>FLEXIBLE TOURS</span> <span class="separator">•</span>
+                <span>24/7 CONTACT SUPPORT</span> <span class="separator">•</span>
+                <span>NO HIDDEN FEES</span> <span class="separator">•</span>
+                <span>FLEXIBLE TOURS</span> <span class="separator">•</span>
+                <span>24/7 CONTACT SUPPORT</span> <span class="separator">•</span>
+            </div>
+            <!-- Duplicate for seamless scroll -->
+            <div class="marquee-text-content">
+                <span>NO HIDDEN FEES</span> <span class="separator">•</span>
+                <span>FLEXIBLE TOURS</span> <span class="separator">•</span>
+                <span>24/7 CONTACT SUPPORT</span> <span class="separator">•</span>
+                <span>NO HIDDEN FEES</span> <span class="separator">•</span>
+                <span>FLEXIBLE TOURS</span> <span class="separator">•</span>
+                <span>24/7 CONTACT SUPPORT</span> <span class="separator">•</span>
+            </div>
+            <!-- Duplicate again for wide screens -->
+            <div class="marquee-text-content">
+                <span>NO HIDDEN FEES</span> <span class="separator">•</span>
+                <span>FLEXIBLE TOURS</span> <span class="separator">•</span>
+                <span>24/7 CONTACT SUPPORT</span> <span class="separator">•</span>
+                <span>NO HIDDEN FEES</span> <span class="separator">•</span>
+                <span>FLEXIBLE TOURS</span> <span class="separator">•</span>
+                <span>24/7 CONTACT SUPPORT</span> <span class="separator">•</span>
+            </div>
+        </div>
+    </div>
+
+    </section>
+
+    <!-- Features Section (Reference Design) -->
+    <section class="vehicle-features-compact">
+        <div class="container">
+            <div class="features-grid-wrapper">
+                <!-- Col 1: Large Image with Border -->
+                <div class="feat-col-image-large">
+                    <div class="decorative-border"></div>
+                    <img src="assets/images/tour-hero.jpg" alt="Our Fleet" class="feat-main-img">
+                </div>
+
+                <!-- Col 2: Stat Card & Small Image -->
+                <div class="feat-col-center">
+                    <div class="feat-stat-card">
+                        <span class="feat-stat-number">24/7</span>
+                        <span class="feat-stat-label">CUSTOMER SUPPORT</span>
+                        <span class="feat-stat-sub">Anytime, Anywhere</span>
+                    </div>
+                    <div class="feat-small-img-wrapper">
+                        <img src="assets/images/friends-together.png" alt="Happy Travelers" class="feat-small-img">
+                    </div>
+                </div>
+
+                <!-- Col 3: Content List -->
+                <div class="feat-col-text">
+                    <h2 class="feat-heading">PREMIUM TRANSPORT<br>SOLUTIONS FOR YOU</h2>
+
+                    <div class="feat-list-item">
+                        <div class="feat-icon-box">
+                            <i class="fas fa-car-side"></i>
+                        </div>
+                        <div class="feat-text-content">
+                            <h3>MODERN FLEET</h3>
+                            <p>Our vehicles are less than 3 years old, fully air-conditioned, and regularly inspected
+                                for maximum safety and comfort.</p>
+                        </div>
+                    </div>
+
+                    <div class="feat-list-item">
+                        <div class="feat-icon-box">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="feat-text-content">
+                            <h3>EXPERT DRIVERS</h3>
+                            <p>Travel with peace of mind. Our licensed, English-speaking chauffeurs guide you safely to
+                                every destination.</p>
+                        </div>
+                    </div>
+
+                    <a href="contact.html" class="btn-primary-red">CONTACT US</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vehicle Details -->
+    <section id="fleet">
+        <div class="container">
+            <div class="vehicles-section-header">
+                <h2>Our Premium Fleet</h2>
+                <p>Choose the perfect vehicle for your Sri Lankan adventure. All vehicles come with professional drivers
+                    and full insurance.</p>
+            </div>
+
+            <div class="vehicles-grid">
+                <!-- Mini Car -->
+                <div class="vehicle-card-modern">
+                    <div class="vehicle-card-image-wrapper">
+                        <img src="assets/images/mini-car.jpg" alt="Mini Car">
+                        <span class="vehicle-badge">Compact</span>
+                    </div>
+                    <div class="vehicle-card-content">
+                        <div class="vehicle-card-header">
+                            <h3>Mini Car</h3>
+                            <p>Perfect for couples or solo travelers looking for an economical and comfortable way to
+                                explore Sri Lanka.</p>
+                        </div>
+
+                        <div class="vehicle-specs-compact">
+                            <div class="spec-item-compact">
+                                <!-- <div class="spec-icon-compact">👥</div> -->
+                                <div class="spec-text-compact">
+                                    <span class="label">Passengers</span>
+                                    <span class="value">2-3</span>
+                                </div>
+                            </div>
+                            <div class="spec-item-compact">
+                                <!-- <div class="spec-icon-compact">🧳</div> -->
+                                <div class="spec-text-compact">
+                                    <span class="label">Luggage</span>
+                                    <span class="value">2 Bags</span>
+                                </div>
+                            </div>
+                            <div class="spec-item-compact">
+                                <!-- <div class="spec-icon-compact">❄️</div> -->
+                                <div class="spec-text-compact">
+                                    <span class="label">Climate</span>
+                                    <span class="value">AC</span>
+                                </div>
+                            </div>
+                            <div class="spec-item-compact">
+                                <!-- <div class="spec-icon-compact">⚡</div> -->
+                                <div class="spec-text-compact">
+                                    <span class="label">Efficiency</span>
+                                    <span class="value">Fuel Efficient</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="vehicle-features-compact">
+                            <span class="feature-tag-compact"> Professional Driver</span>
+                            <span class="feature-tag-compact"> Fully Insured</span>
+                            <span class="feature-tag-compact"> GPS Navigation</span>
+                            <span class="feature-tag-compact"> Music System</span>
+                        </div>
+
+                        <div class="vehicle-card-footer">
+                            <a href="contact.html" class="btn-book-vehicle">Book This Vehicle</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sedan -->
+                <div class="vehicle-card-modern">
+                    <div class="vehicle-card-image-wrapper">
+                        <img src="assets/images/sedan.jpg" alt="Sedan">
+                        <span class="vehicle-badge popular">Popular Choice</span>
+                    </div>
+                    <div class="vehicle-card-content">
+                        <div class="vehicle-card-header">
+                            <h3>Sedan</h3>
+                            <p>Our most popular choice for small families and groups. Perfect for both city tours and
+                                longer journeys.</p>
+                        </div>
+
+                        <div class="vehicle-specs-compact">
+                            <div class="spec-item-compact">
+                                <!-- <div class="spec-icon-compact">👥</div> -->
+                                <div class="spec-text-compact">
+                                    <span class="label">Passengers</span>
+                                    <span class="value">3-4</span>
+                                </div>
+                            </div>
+                            <div class="spec-item-compact">
+                                <!-- <div class="spec-icon-compact">🧳</div> -->
+                                <div class="spec-text-compact">
+                                    <span class="label">Luggage</span>
+                                    <span class="value">3 Bags</span>
+                                </div>
+                            </div>
+                            <div class="spec-item-compact">
+                                <!-- <div class="spec-icon-compact">❄️</div> -->
+                                <div class="spec-text-compact">
+                                    <span class="label">Climate</span>
+                                    <span class="value">AC</span>
+                                </div>
+                            </div>
+                            <div class="spec-item-compact">
+                                <!-- <div class="spec-icon-compact">💺</div> -->
+                                <div class="spec-text-compact">
+                                    <span class="label">Comfort</span>
+                                    <span class="value">Premium Seats</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="vehicle-features-compact">
+                            <span class="feature-tag-compact"> Professional Driver</span>
+                            <span class="feature-tag-compact"> Fully Insured</span>
+                            <span class="feature-tag-compact"> GPS Navigation</span>
+                            <span class="feature-tag-compact"> Premium Sound</span>
+                            <span class="feature-tag-compact"> USB Charging</span>
+                        </div>
+
+                        <div class="vehicle-card-footer">
+                            <a href="contact.html" class="btn-book-vehicle">Book This Vehicle</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mini Van -->
+                <div class="vehicle-card-modern">
+                    <div class="vehicle-card-image-wrapper">
+                        <img src="assets/images/mini-van.jpg" alt="Mini Van">
+                        <span class="vehicle-badge value">Best Value</span>
+                    </div>
+                    <div class="vehicle-card-content">
+                        <div class="vehicle-card-header">
+                            <h3>Mini Van</h3>
+                            <p>Ideal for families and small groups. Offers ample space for passengers and luggage for
+                                multi-day tours.</p>
+                        </div>
+
+                        <div class="vehicle-specs-compact">
+                            <div class="spec-item-compact">
+                                <!-- <div class="spec-icon-compact">👥</div> -->
+                                <div class="spec-text-compact">
+                                    <span class="label">Passengers</span>
+                                    <span class="value">5-7</span>
+                                </div>
+                            </div>
+                            <div class="spec-item-compact">
+                                <!-- <div class="spec-icon-compact">🧳</div> -->
+                                <div class="spec-text-compact">
+                                    <span class="label">Luggage</span>
+                                    <span class="value">5 Bags</span>
+                                </div>
+                            </div>
+                            <div class="spec-item-compact">
+                                <!-- <div class="spec-icon-compact">❄️</div> -->
+                                <div class="spec-text-compact">
+                                    <span class="label">Climate</span>
+                                    <span class="value">AC</span>
+                                </div>
+                            </div>
+                            <div class="spec-item-compact">
+                                <!-- <div class="spec-icon-compact">🪟</div> -->
+                                <div class="spec-text-compact">
+                                    <span class="label">View</span>
+                                    <span class="value">Panoramic</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="vehicle-features-compact">
+                            <span class="feature-tag-compact"> Professional Driver</span>
+                            <span class="feature-tag-compact"> Fully Insured</span>
+                            <span class="feature-tag-compact"> GPS Navigation</span>
+                            <span class="feature-tag-compact"> Extra Legroom</span>
+                            <span class="feature-tag-compact"> USB Charging</span>
+                            <span class="feature-tag-compact"> WiFi Available</span>
+                        </div>
+
+                        <div class="vehicle-card-footer">
+                            <a href="contact.html" class="btn-book-vehicle">Book This Vehicle</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- High Roof Van -->
+                <div class="vehicle-card-modern">
+                    <div class="vehicle-card-image-wrapper">
+                        <img src="assets/images/high-roof.jpg" alt="High Roof Van">
+                        <span class="vehicle-badge premium">Premium</span>
+                    </div>
+                    <div class="vehicle-card-content">
+                        <div class="vehicle-card-header">
+                            <h3>High Roof Van</h3>
+                            <p>Our largest and most spacious vehicle, perfect for large groups. Maximum comfort for
+                                extended tours.</p>
+                        </div>
+
+                        <div class="vehicle-specs-compact">
+                            <div class="spec-item-compact">
+                                <!-- <div class="spec-icon-compact">👥</div> -->
+                                <div class="spec-text-compact">
+                                    <span class="label">Passengers</span>
+                                    <span class="value">8-12</span>
+                                </div>
+                            </div>
+                            <div class="spec-item-compact">
+                                <!-- <div class="spec-icon-compact">🧳</div> -->
+                                <div class="spec-text-compact">
+                                    <span class="label">Luggage</span>
+                                    <span class="value">8+ Bags</span>
+                                </div>
+                            </div>
+                            <div class="spec-item-compact">
+                                <!-- <div class="spec-icon-compact">❄️</div> -->
+                                <div class="spec-text-compact">
+                                    <span class="label">Climate</span>
+                                    <span class="value">Dual AC</span>
+                                </div>
+                            </div>
+                            <div class="spec-item-compact">
+                                <!-- <div class="spec-icon-compact">⭐</div> -->
+                                <div class="spec-text-compact">
+                                    <span class="label">Class</span>
+                                    <span class="value">Premium</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="vehicle-features-compact">
+                            <span class="feature-tag-compact"> Professional Driver</span>
+                            <span class="feature-tag-compact"> Fully Insured</span>
+                            <span class="feature-tag-compact"> GPS Navigation</span>
+                            <span class="feature-tag-compact"> Reclining Seats</span>
+                            <span class="feature-tag-compact"> USB Charging</span>
+                            <span class="feature-tag-compact"> WiFi Available</span>
+                            <span class="feature-tag-compact"> Entertainment System</span>
+                        </div>
+
+                        <div class="vehicle-card-footer">
+                            <a href="contact.html" class="btn-book-vehicle">Book This Vehicle</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Our Fleet -->
+    <section style="background: var(--gray-50);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Our Fleet Stands Out</h2>
+                <p class="section-subtitle">Premium vehicles, exceptional service</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <!-- <div class="feature-icon">🔧</div> -->
+                    <h3>Regular Maintenance</h3>
+                    <p>All vehicles undergo rigorous maintenance checks to ensure safety and reliability on every
+                        journey.</p>
+                </div>
+                <div class="feature-item">
+                    <!-- <div class="feature-icon">🧼</div> -->
+                    <h3>Spotlessly Clean</h3>
+                    <p>Every vehicle is thoroughly cleaned and sanitized before each trip for your comfort and safety.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <!-- <div class="feature-icon">🛡️</div> -->
+                    <h3>Fully Insured</h3>
+                    <p>Comprehensive insurance coverage on all vehicles for complete peace of mind during your travels.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <!-- <div class="feature-icon">👨‍✈️</div> -->
+                    <h3>Expert Drivers</h3>
+                    <p>Professional, licensed drivers with extensive knowledge of Sri Lankan roads and tourist
+                        destinations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </section>
+
+    <!-- Taxi Booking Form Section -->
+    <section class="booking-form-section" id="booking">
+        <div class="container">
+            <div class="booking-form-header">
+                <h2>Book Your Taxi</h2>
+                <p>Fill in the details below to reserve your vehicle for a comfortable journey</p>
+            </div>
+
+            <form class="taxi-booking-form" id="taxiBookingForm">
+                <div class="form-grid">
+                    <!-- Name -->
+                    <div class="form-group">
+                        <label for="name">Full Name <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    </div>
+
+                    <!-- Flight Number -->
+                    <div class="form-group">
+                        <label for="flight">Flight Number</label>
+                        <input type="text" id="flight" name="flight" placeholder="e.g., UL 504">
+                    </div>
+
+                    <!-- Pickup Date -->
+                    <div class="form-group">
+                        <label for="pickup-date">Pickup Date <span class="required">*</span></label>
+                        <input type="date" id="pickup-date" name="pickup-date" required>
+                    </div>
+
+                    <!-- Pickup Time -->
+                    <div class="form-group">
+                        <label for="pickup-time">Pickup Time <span class="required">*</span></label>
+                        <input type="time" id="pickup-time" name="pickup-time" required>
+                    </div>
+
+                    <!-- Adults -->
+                    <div class="form-group">
+                        <label for="adults">Adults <span class="required">*</span></label>
+                        <select id="adults" name="adults" required>
+                            <option value="">Select number</option>
+                            <option value="1">1 Adult</option>
+                            <option value="2">2 Adults</option>
+                            <option value="3">3 Adults</option>
+                            <option value="4">4 Adults</option>
+                            <option value="5">5 Adults</option>
+                            <option value="6">6 Adults</option>
+                            <option value="7">7 Adults</option>
+                            <option value="8">8+ Adults</option>
+                        </select>
+                    </div>
+
+                    <!-- Children -->
+                    <div class="form-group">
+                        <label for="children">Children</label>
+                        <select id="children" name="children">
+                            <option value="0">No Children</option>
+                            <option value="1">1 Child</option>
+                            <option value="2">2 Children</option>
+                            <option value="3">3 Children</option>
+                            <option value="4">4 Children</option>
+                            <option value="5">5+ Children</option>
+                        </select>
+                    </div>
+
+                    <!-- Vehicle Type -->
+                    <div class="form-group">
+                        <label for="vehicle-type">Vehicle Type <span class="required">*</span></label>
+                        <select id="vehicle-type" name="vehicleType" required>
+                            <option value="">Select vehicle type</option>
+                            <option value="sedan">Sedan (1-3 passengers)</option>
+                            <option value="suv">SUV (4-6 passengers)</option>
+                            <option value="van">Van (7-12 passengers)</option>
+                            <option value="luxury">Luxury Car</option>
+                            <option value="minibus">Mini Bus (13-20 passengers)</option>
+                        </select>
+                    </div>
+
+                    <!-- Pickup Location -->
+                    <div class="form-group">
+                        <label for="pickup-location">Pickup Location <span class="required">*</span></label>
+                        <input type="text" id="pickup-location" name="pickup-location"
+                            placeholder="e.g., Colombo Airport" required>
+                    </div>
+
+                    <!-- Drop-off Location -->
+                    <div class="form-group">
+                        <label for="dropoff-location">Drop-off Location <span class="required">*</span></label>
+                        <input type="text" id="dropoff-location" name="dropoff-location"
+                            placeholder="e.g., Galle Fort Hotel" required>
+                    </div>
+
+                    <!-- Message (Full Width) -->
+                    <div class="form-group form-group-full">
+                        <label for="message">Special Requests or Message</label>
+                        <textarea id="message" name="message" rows="4"
+                            placeholder="Any special requirements, luggage details, or additional information..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-submit">
+                    <button type="submit" class="btn-submit-booking" id="submitBtn">
+                        <span id="btnText">Book Now</span>
+                        <svg id="btnIcon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span id="btnSpinner" class="spinner" style="display: none;">⏳</span>
+                    </button>
+                </div>
+
+                <!-- Feedback Messages -->
+                <div id="formFeedback" class="form-feedback" style="display: none;"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer Redesign -->
+    <footer class="footer-modern">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand-col">
+                    <img src="assets/images/mahi-logo.png" alt="Mahi Maps" class="footer-logo">
+                    <p>Travel beyond boundaries. Discover, connect, and experience the beautiful island of Sri Lanka
+                        with us.</p>
+                    <div class="social-links-minimal">
+                        <a href="https://www.facebook.com/share/1E5aVVFGKd/?mibextid=wwXIfr" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/mahimaps_?igsh=MTl1eWN0dmhsMzVzcw==" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="vehicles.html">Our Fleet</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Get in Touch</h4>
+                    <ul class="contact-list">
+                        <li><a href="tel:+94743592570">+94 74 359 2570</a></li>
+                        <li><a href="mailto:mahimapsinfo@gmail.com">mahimapsinfo@gmail.com</a></li>
+                        <li>Galle, Rathgama, Sri Lanka</li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Instagram Post</h4>
+                    <div class="insta-grid">
+                        <img src="assets/images/sigiriya-fortress.png" alt="Sri Lanka 1">
+                        <img src="assets/images/mirissa-beach.png" alt="Sri Lanka 2">
+                        <img src="assets/images/ella-nine-arch.png" alt="Sri Lanka 3">
+                        <img src="assets/images/tour-hero.jpg" alt="Sri Lanka 4">
+                        <img src="assets/images/gallery-hero.jpg" alt="Sri Lanka 5">
+                        <img src="assets/images/friends-together.png" alt="Sri Lanka 6">
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Copyright © Mahi Maps 2026. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/94743592570" class="whatsapp-float" target="_blank">
+        <span class="whatsapp-icon">💬</span>
+    </a>
+
+    <script src="script.js"></script>
+
+    <!-- Taxi Booking Form Handler -->
+    <script>
+        // Configuration
+        const API_URL = 'http://localhost:3000/api/book-taxi';
+
+        // Get form elements
+        const form = document.getElementById('taxiBookingForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnIcon = document.getElementById('btnIcon');
+        const btnSpinner = document.getElementById('btnSpinner');
+        const formFeedback = document.getElementById('formFeedback');
+
+        // Handle form submission
+        if (form) {
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                // Disable submit button and show loading state
+                submitBtn.disabled = true;
+                btnText.textContent = 'Sending...';
+                btnIcon.style.display = 'none';
+                btnSpinner.style.display = 'inline-block';
+                formFeedback.style.display = 'none';
+
+                // Collect form data
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    flight: document.getElementById('flight').value,
+                    pickupDate: document.getElementById('pickup-date').value,
+                    pickupTime: document.getElementById('pickup-time').value,
+                    adults: document.getElementById('adults').value,
+                    children: document.getElementById('children').value,
+                    vehicleType: document.getElementById('vehicle-type').value,
+                    pickupLocation: document.getElementById('pickup-location').value,
+                    dropoffLocation: document.getElementById('dropoff-location').value,
+                    message: document.getElementById('message').value
+                };
+
+                try {
+                    // Send data to backend
+                    const response = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok && result.success) {
+                        // Success
+                        showFeedback('success', result.message || 'Booking request sent successfully! We will contact you soon.');
+                        form.reset();
+
+                        // Scroll to feedback message
+                        formFeedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    } else {
+                        // Error from server
+                        showFeedback('error', result.message || 'Failed to send booking request. Please try again.');
+                    }
+                } catch (error) {
+                    // Network or other error
+                    console.error('Error:', error);
+                    showFeedback('error', 'Unable to connect to the server. Please check if the server is running or try again later.');
+                } finally {
+                    // Re-enable submit button
+                    submitBtn.disabled = false;
+                    btnText.textContent = 'Book Now';
+                    btnIcon.style.display = 'inline-block';
+                    btnSpinner.style.display = 'none';
+                }
+            });
+        }
+
+        // Show feedback message
+        function showFeedback(type, message) {
+            formFeedback.className = 'form-feedback ' + type;
+            formFeedback.innerHTML = `
+                <div class="feedback-content">
+                    <span class="feedback-icon">${type === 'success' ? '✅' : '❌'}</span>
+                    <span class="feedback-message">${message}</span>
+                </div>
+            `;
+            formFeedback.style.display = 'block';
+
+            // Auto-hide success message after 10 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    formFeedback.style.display = 'none';
+                }, 10000);
+            }
+        }
+    </script>
+</body>
+
+</html>

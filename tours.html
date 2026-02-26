@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Packages - Mahi Maps | Explore Sri Lanka</title>
+    <meta name="description"
+        content="Discover our curated Sri Lanka tour packages - Cultural Triangle, Hill Country, Beach Tours, Wildlife Safaris, and Custom Tours.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .tour-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition-base);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .tour-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .tour-grid {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 0;
+        }
+
+        .tour-image {
+            height: 100%;
+            min-height: 350px;
+            overflow: hidden;
+            display: block;
+        }
+
+        .tour-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .tour-card:hover .tour-image img {
+            transform: scale(1.1);
+        }
+
+        .tour-content {
+            padding: var(--spacing-xl);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .tour-header h3 {
+            font-size: 1.75rem;
+            margin-bottom: var(--spacing-xs);
+            color: var(--gray-900);
+        }
+
+        .tour-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        .tour-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        .tour-description {
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .tour-highlights {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .tour-highlights h4 {
+            font-size: 1rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--gray-900);
+        }
+
+        .highlights-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xs);
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray-700);
+            font-size: 0.9rem;
+        }
+
+        .tour-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--gray-200);
+        }
+
+        /* Tour Page Specific Styles */
+        .included-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-xl);
+            padding: var(--spacing-md) 0;
+        }
+
+        .included-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid transparent;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .included-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .included-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .included-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .included-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .included-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: var(--ocean-blue);
+        }
+
+        .included-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            transition: transform 0.4s ease;
+        }
+
+        .included-card:hover .included-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .included-card h3 {
+            font-size: 1.25rem;
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .included-card p {
+            color: var(--gray-600);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 968px) {
+            .tour-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tour-image {
+                height: 250px;
+            }
+
+            .tours-hero h1 {
+                font-size: 2rem;
+            }
+
+            .highlights-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll Down Button */
+        .scroll-down-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: var(--spacing-xl) 0;
+            background: var(--white);
+        }
+
+        .scroll-down-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            color: #000;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 50%;
+            background: var(--white);
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .scroll-down-button:hover {
+            background: #f5f5f5;
+            transform: translateY(5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .scroll-down-button svg {
+            animation: bounce-down 2s infinite;
+        }
+
+        @keyframes bounce-down {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(10px);
+            }
+
+            60% {
+                transform: translateY(5px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="assets/images/mahi-logo.png" alt="Mahi Maps - Travel & Tour Sri Lanka" style="height: 45px;">
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="vehicles.html" class="nav-link">Vehicles</a></li>
+                <li><a href="tours.html" class="nav-link active">Tours</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="vehicles.html#booking" class="btn-book-nav">Book Now</a>
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Tours Hero Redesign -->
+    <section class="about-hero-modern">
+        <div class="container">
+            <div class="hero-content-center">
+                <div class="hero-badge"><span class="badge-dot"></span> Explore Our Packages</div>
+                <h1 class="hero-title-modern">Experience the Magic<br>of Sri Lanka</h1>
+                <p class="hero-desc-modern">
+                    From pristine beaches to ancient temples, our curated tours offer the perfect blend of adventure and
+                    relaxation.
+                    Choose your path and let us guide you.
+                </p>
+                <a href="#all-tours" class="btn-hero-cta">View All Tours</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll Down Button -->
+    <div class="scroll-down-container">
+        <a href="#all-tours" class="scroll-down-button">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 13L12 18L17 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M7 6L12 11L17 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </a>
+    </div>
+
+    <!-- Scroll Card Section (Marquee) -->
+
+    <section class="marquee-section">
+        <div class="marquee-container">
+            <div class="marquee-track">
+
+                <div class="marquee-item">
+                    <img src="assets/images/sigiriya-fortress.png" alt="Sigiriya">
+                </div>
+
+                <div class="marquee-item">
+                    <img src="assets/images/mirissa-beach.png" alt="Mirissa">
+                </div>
+
+                <div class="marquee-item">
+                    <img src="assets/images/ella-nine-arch.png" alt="Ella">
+                </div>
+
+                <div class="marquee-item">
+                    <img src="assets/images/tour-hero.jpg" alt="Tour">
+                </div>
+
+                <div class="marquee-item">
+                    <img src="assets/images/gallery-hero.jpg" alt="Gallery">
+                </div>
+
+                <div class="marquee-item">
+                    <img src="assets/images/friends-together.png" alt="Friends">
+                </div>
+
+                <div class="marquee-item">
+                    <img src="assets/images/sigiriya-fortress.png" alt="Sigiriya">
+                </div>
+
+                <div class="marquee-item">
+                    <img src="assets/images/mirissa-beach.png" alt="Mirissa">
+                </div>
+
+                <div class="marquee-item">
+                    <img src="assets/images/ella-nine-arch.png" alt="Ella">
+                </div>
+
+                <div class="marquee-item">
+                    <img src="assets/images/tour-hero.jpg" alt="Tour">
+                </div>
+
+                <div class="marquee-item">
+                    <img src="assets/images/gallery-hero.jpg" alt="Gallery">
+                </div>
+
+                <div class="marquee-item">
+                    <img src="assets/images/friends-together.png" alt="Friends">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Packages -->
+    <!-- Tour Packages -->
+    <!-- Tour Highlights Section -->
+    <section class="tour-highlights-section" style="padding-bottom: 0;">
+        <div class="container">
+            <div class="tour-highlights-header">
+                <div>
+                    <p class="tour-highlights-subtitle">DISCOVER SRI LANKA</p>
+                    <h2 class="tour-highlights-title">Tour Highlights</h2>
+                </div>
+            </div>
+
+            <div class="tour-highlights-scroll">
+                <!-- Ella -> Hill Country -->
+                <a href="#hill-country" class="tour-highlight-card" style="text-decoration: none;">
+                    <img src="assets/images/ella-nine-arch.png" alt="Ella, Sri Lanka" class="tour-highlight-image">
+                    <div class="tour-highlight-overlay">
+                        <h3 class="tour-highlight-name">Ella</h3>
+                        <p class="tour-highlight-activities">156 activities</p>
+                    </div>
+                </a>
+
+                <!-- Sigiriya -> Cultural Triangle -->
+                <a href="#cultural-triangle" class="tour-highlight-card" style="text-decoration: none;">
+                    <img src="assets/images/sigiriya-fortress.png" alt="Sigiriya, Sri Lanka"
+                        class="tour-highlight-image">
+                    <div class="tour-highlight-overlay">
+                        <h3 class="tour-highlight-name">Sigiriya</h3>
+                        <p class="tour-highlight-activities">89 activities</p>
+                    </div>
+                </a>
+
+                <!-- Kandy -> Hill Country (Alternative) or Cultural Triangle depending on tour content -->
+                <a href="#hill-country" class="tour-highlight-card" style="text-decoration: none;">
+                    <img src="assets/images/kandy-temple.png" alt="Kandy, Sri Lanka" class="tour-highlight-image">
+                    <div class="tour-highlight-overlay">
+                        <h3 class="tour-highlight-name">Kandy</h3>
+                        <p class="tour-highlight-activities">124 activities</p>
+                    </div>
+                </a>
+
+                <!-- Yala National Park -> Wildlife Safari -->
+                <a href="#wildlife-safari" class="tour-highlight-card" style="text-decoration: none;">
+                    <img src="assets/images/yala-national-park.png" alt="Yala National Park, Sri Lanka"
+                        class="tour-highlight-image">
+                    <div class="tour-highlight-overlay">
+                        <h3 class="tour-highlight-name">Yala National Park</h3>
+                        <p class="tour-highlight-activities">67 activities</p>
+                    </div>
+                </a>
+
+                <!-- Mirissa -> Beach & Coastal -->
+                <a href="#beach-coastal" class="tour-highlight-card" style="text-decoration: none;">
+                    <img src="assets/images/mirissa-beach.png" alt="Mirissa, Sri Lanka" class="tour-highlight-image">
+                    <div class="tour-highlight-overlay">
+                        <h3 class="tour-highlight-name">Mirissa</h3>
+                        <p class="tour-highlight-activities">98 activities</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Packages -->
+    <section id="all-tours">
+        <div class="container">
+            <!-- Cultural Triangle Tour -->
+            <!-- Cultural Triangle Tour -->
+            <div class="tour-card" id="cultural-triangle">
+                <div class="tour-grid">
+                    <div class="tour-image">
+                        <img src="assets/images/sigiriya-fortress.png" alt="Cultural Triangle Tour">
+                    </div>
+                    <div class="tour-content">
+                        <div>
+                            <div class="tour-header">
+                                <h3>Cultural Triangle Tour</h3>
+                                <div class="tour-meta">
+                                    <span class="tour-meta-item">⏱️ 5-7 Days</span>
+                                    <span class="tour-meta-item">📍 Anuradhapura, Polonnaruwa, Sigiriya, Dambulla</span>
+                                </div>
+                            </div>
+
+                            <p class="tour-description">
+                                Immerse yourself in Sri Lanka's ancient history and UNESCO World Heritage Sites. Explore
+                                magnificent rock fortresses, ancient temples, and sacred cities that tell the story of a
+                                glorious past.
+                            </p>
+
+                            <div class="tour-highlights">
+                                <h4>Tour Highlights:</h4>
+                                <div class="highlights-list">
+                                    <span class="highlight-item">✓ Sigiriya Rock Fortress</span>
+                                    <span class="highlight-item">✓ Dambulla Cave Temple</span>
+                                    <span class="highlight-item">✓ Ancient City of Polonnaruwa</span>
+                                    <span class="highlight-item">✓ Sacred City of Anuradhapura</span>
+                                    <span class="highlight-item">✓ Temple of the Tooth, Kandy</span>
+                                    <span class="highlight-item">✓ Spice Garden Visit</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tour-footer">
+                            <span class="tour-price">Starting from Colombo</span>
+                            <a href="contact.html" class="btn btn-primary">Customize This Tour</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hill Country Tour -->
+            <!-- Hill Country Tour -->
+            <div class="tour-card" id="hill-country">
+                <div class="tour-grid">
+                    <div class="tour-image">
+                        <img src="assets/images/ella-nine-arch.png" alt="Hill Country Tour">
+                    </div>
+                    <div class="tour-content">
+                        <div>
+                            <div class="tour-header">
+                                <h3>Hill Country Tour</h3>
+                                <div class="tour-meta">
+                                    <span class="tour-meta-item">⏱️ 4-6 Days</span>
+                                    <span class="tour-meta-item">📍 Kandy, Nuwara Eliya, Ella, Horton Plains</span>
+                                </div>
+                            </div>
+
+                            <p class="tour-description">
+                                Escape to the cool, misty mountains of Sri Lanka's central highlands. Experience
+                                breathtaking landscapes, lush tea plantations, and charming colonial-era towns.
+                            </p>
+
+                            <div class="tour-highlights">
+                                <h4>Tour Highlights:</h4>
+                                <div class="highlights-list">
+                                    <span class="highlight-item">✓ Scenic Train Ride to Ella</span>
+                                    <span class="highlight-item">✓ Tea Plantation & Factory Visit</span>
+                                    <span class="highlight-item">✓ Nine Arch Bridge</span>
+                                    <span class="highlight-item">✓ Little Adam's Peak Hike</span>
+                                    <span class="highlight-item">✓ Horton Plains & World's End</span>
+                                    <span class="highlight-item">✓ Gregory Lake, Nuwara Eliya</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tour-footer">
+                            <span class="tour-price">Starting from Colombo</span>
+                            <a href="contact.html" class="btn btn-primary">Customize This Tour</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beach Tour -->
+            <!-- Beach Tour -->
+            <div class="tour-card" id="beach-coastal">
+                <div class="tour-grid">
+                    <div class="tour-image">
+                        <img src="assets/images/mirissa-beach.png" alt="Beach & Coastal Tour">
+                    </div>
+                    <div class="tour-content">
+                        <div>
+                            <div class="tour-header">
+                                <h3>Beach & Coastal Tour</h3>
+                                <div class="tour-meta">
+                                    <span class="tour-meta-item">⏱️ 5-7 Days</span>
+                                    <span class="tour-meta-item">📍 Mirissa, Unawatuna, Bentota, Arugam Bay</span>
+                                </div>
+                            </div>
+
+                            <p class="tour-description">
+                                Relax on pristine beaches, explore historic coastal forts, and enjoy water sports.
+                                Perfect for beach lovers and those seeking sun, sand, and surf.
+                            </p>
+
+                            <div class="tour-highlights">
+                                <h4>Tour Highlights:</h4>
+                                <div class="highlights-list">
+                                    <span class="highlight-item">✓ Whale Watching in Mirissa</span>
+                                    <span class="highlight-item">✓ Galle Fort Exploration</span>
+                                    <span class="highlight-item">✓ Turtle Hatchery Visit</span>
+                                    <span class="highlight-item">✓ Snorkeling & Diving</span>
+                                    <span class="highlight-item">✓ Beach Hopping</span>
+                                    <span class="highlight-item">✓ Seafood Dining Experience</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tour-footer">
+                            <span class="tour-price">Starting from Colombo</span>
+                            <a href="contact.html" class="btn btn-primary">Customize This Tour</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wildlife Safari Tour -->
+            <!-- Wildlife Safari Tour -->
+            <div class="tour-card" id="wildlife-safari">
+                <div class="tour-grid">
+                    <div class="tour-image">
+                        <img src="assets/images/yala-national-park.png" alt="Wildlife Safari Tour">
+                    </div>
+                    <div class="tour-content">
+                        <div>
+                            <div class="tour-header">
+                                <h3>Wildlife Safari Tour</h3>
+                                <div class="tour-meta">
+                                    <span class="tour-meta-item">⏱️ 3-5 Days</span>
+                                    <span class="tour-meta-item">📍 Yala, Udawalawe, Minneriya, Wilpattu</span>
+                                </div>
+                            </div>
+
+                            <p class="tour-description">
+                                Experience Sri Lanka's incredible biodiversity. Spot leopards, elephants, sloth bears,
+                                and exotic birds in their natural habitats across multiple national parks.
+                            </p>
+
+                            <div class="tour-highlights">
+                                <h4>Tour Highlights:</h4>
+                                <div class="highlights-list">
+                                    <span class="highlight-item">✓ Yala National Park Safari</span>
+                                    <span class="highlight-item">✓ Elephant Gathering, Minneriya</span>
+                                    <span class="highlight-item">✓ Udawalawe Elephant Transit Home</span>
+                                    <span class="highlight-item">✓ Bird Watching</span>
+                                    <span class="highlight-item">✓ Leopard Spotting</span>
+                                    <span class="highlight-item">✓ Nature Photography</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tour-footer">
+                            <span class="tour-price">Starting from Colombo</span>
+                            <a href="contact.html" class="btn btn-primary">Customize This Tour</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Tour -->
+            <div class="tour-card">
+                <div class="tour-grid">
+                    <div class="tour-image">
+                        <img src="assets/images/unique-adventures.png" alt="Custom Tour Package">
+                    </div>
+                    <div class="tour-content">
+                        <div>
+                            <div class="tour-header">
+                                <h3>Custom Tour Package</h3>
+                                <div class="tour-meta">
+                                    <span class="tour-meta-item">⏱️ Flexible Duration</span>
+                                    <span class="tour-meta-item">📍 Your Choice of Destinations</span>
+                                </div>
+                            </div>
+
+                            <p class="tour-description">
+                                Design your perfect Sri Lankan adventure! Tell us your interests, preferred
+                                destinations, and travel style, and we'll create a personalized itinerary just for you.
+                            </p>
+
+                            <div class="tour-highlights">
+                                <h4>Customization Options:</h4>
+                                <div class="highlights-list">
+                                    <span class="highlight-item">✓ Choose Your Destinations</span>
+                                    <span class="highlight-item">✓ Flexible Duration</span>
+                                    <span class="highlight-item">✓ Activity Preferences</span>
+                                    <span class="highlight-item">✓ Budget-Friendly Options</span>
+                                    <span class="highlight-item">✓ Special Interests Catered</span>
+                                    <span class="highlight-item">✓ Family-Friendly Planning</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tour-footer">
+                            <span class="tour-price">Tailored to Your Budget</span>
+                            <a href="contact.html" class="btn btn-primary">Plan Your Trip</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included -->
+    <section style="background: var(--gray-50);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What's Included in Our Tours</h2>
+                <p class="section-subtitle">Everything you need for a hassle-free experience</p>
+            </div>
+            <div class="included-grid">
+                <div class="included-card">
+                    <div class="included-icon">🚗</div>
+                    <h3>Transportation</h3>
+                    <p>Comfortable, air-conditioned vehicle with professional driver for the entire tour duration.</p>
+                </div>
+                <div class="included-card">
+                    <div class="included-icon">👨‍✈️</div>
+                    <h3>Expert Guide</h3>
+                    <p>Knowledgeable driver-guide who shares insights about culture, history, and local attractions.</p>
+                </div>
+                <div class="included-card">
+                    <div class="included-icon">⛽</div>
+                    <h3>Fuel & Tolls</h3>
+                    <p>All fuel costs, parking fees, and highway tolls included in the package price.</p>
+                </div>
+                <div class="included-card">
+                    <div class="included-icon">🗺️</div>
+                    <h3>Flexible Itinerary</h3>
+                    <p>Customize stops and timing based on your preferences and interests along the way.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="text-align: center;">
+        <div class="container">
+            <h2 class="section-title">Ready to Start Your Adventure?</h2>
+            <p class="section-subtitle" style="margin-bottom: var(--spacing-xl);">Contact us to customize your perfect
+                Sri Lanka tour package</p>
+            <a href="contact.html" class="btn btn-primary">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer Redesign -->
+    <footer class="footer-modern">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand-col">
+                    <img src="assets/images/mahi-logo.png" alt="Mahi Maps" class="footer-logo">
+                    <p>Travel beyond boundaries. Discover, connect, and experience the beautiful island of Sri Lanka
+                        with us.</p>
+                    <div class="social-links-minimal">
+                        <a href="https://www.facebook.com/share/1E5aVVFGKd/?mibextid=wwXIfr" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/mahimaps_?igsh=MTl1eWN0dmhsMzVzcw==" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="vehicles.html">Our Fleet</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Get in Touch</h4>
+                    <ul class="contact-list">
+                        <li><a href="tel:+94743592570">+94 74 359 2570</a></li>
+                        <li><a href="mailto:mahimapsinfo@gmail.com">mahimapsinfo@gmail.com</a></li>
+                        <li>Galle, Rathgama, Sri Lanka</li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Instagram Post</h4>
+                    <div class="insta-grid">
+                        <img src="assets/images/sigiriya-fortress.png" alt="Sri Lanka 1">
+                        <img src="assets/images/mirissa-beach.png" alt="Sri Lanka 2">
+                        <img src="assets/images/ella-nine-arch.png" alt="Sri Lanka 3">
+                        <img src="assets/images/tour-hero.jpg" alt="Sri Lanka 4">
+                        <img src="assets/images/gallery-hero.jpg" alt="Sri Lanka 5">
+                        <img src="assets/images/friends-together.png" alt="Sri Lanka 6">
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Copyright © Mahi Maps 2026. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/94743592570" class="whatsapp-float" target="_blank">
+        <span class="whatsapp-icon">💬</span>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
