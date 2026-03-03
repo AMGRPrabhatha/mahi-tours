@@ -3285,21 +3285,69 @@ section {
 }
 
 @media (max-width: 576px) {
+    .footer-modern {
+        padding: var(--spacing-xl) 0 var(--spacing-md);
+    }
+
     .footer-top {
         grid-template-columns: 1fr;
-        text-align: center;
+        gap: var(--spacing-lg);
+        text-align: left;
     }
 
     .footer-brand-col p {
-        margin: 0 auto;
+        margin: 0;
     }
 
     .social-links-minimal {
-        justify-content: center;
+        justify-content: flex-start;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .footer-links-col h4 {
+        position: relative;
+        padding-bottom: var(--spacing-xs);
+        margin-bottom: var(--spacing-sm);
+        display: block;
+        border-bottom: 1px solid var(--gray-200);
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .footer-links-col h4::after {
+        content: '\f107';
+        /* FontAwesome angle-down */
+        font-family: 'Font Awesome 5 Free', 'Font Awesome 6 Free';
+        font-weight: 900;
+        font-size: 0.9em;
+        color: var(--gray-500);
+        position: static;
+        transform: none;
+        width: auto;
+        height: auto;
+        background: none;
+    }
+
+    .footer-links-col ul:not(.contact-list) {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-xs);
     }
 
     .contact-list li {
-        justify-content: center;
+        justify-content: flex-start;
+    }
+
+    .footer-links-col:last-child {
+        display: none;
+        /* Hide Instagram section completely on mobile */
+    }
+
+    .footer-bottom {
+        text-align: left;
+        margin-top: var(--spacing-md);
     }
 }
 
