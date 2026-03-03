@@ -4183,6 +4183,10 @@ section {
         grid-template-columns: 1fr;
     }
 
+    .form-row-2 {
+        grid-template-columns: 1fr;
+    }
+
     .contact-page-header {
         flex-direction: column;
         text-align: center;
