@@ -2822,7 +2822,8 @@ section {
     }
 
     .offer-card {
-        min-width: 280px;
+        width: 80vw;
+        max-width: 280px;
         flex: 0 0 auto;
         scroll-snap-align: center;
         min-height: auto;
