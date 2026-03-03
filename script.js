@@ -1,7 +1,3 @@
-// ===================================
-// MAHI MAPS - INTERACTIVE FEATURES
-// ===================================
-
 // Mobile Navigation Toggle
 const mobileToggle = document.getElementById('mobileToggle');
 const navMenu = document.getElementById('navMenu');
@@ -462,3 +458,58 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+// Offer Modals
+function openOfferModal(event, modalId) {
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+}
+
+function closeOfferModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+}
+
+function closeOfferModalOutside(event, modalId) {
+    const modal = document.getElementById(modalId);
+    if (event.target === modal) {
+        closeOfferModal(modalId);
+    }
+}
+
+// Destination Modals
+function openDestModal(event, modalId) {
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+}
+
+function closeDestModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+}
+
+function closeDestModalOutside(event, modalId) {
+    const modal = document.getElementById(modalId);
+    if (event.target === modal) {
+        closeDestModal(modalId);
+    }
+}

@@ -342,6 +342,10 @@
         }
 
         @media (max-width: 968px) {
+            .hero-enhanced {
+                padding-top: 80px;
+            }
+
             .booking-form {
                 grid-template-columns: 1fr;
             }
@@ -427,7 +431,7 @@
             <h2>Offers for you</h2>
             <div class="offers-grid">
                 <!-- Offer 1 -->
-                <div class="offer-card">
+                <div class="offer-card" onclick="openOfferModal(event, 'offer-modal-1')">
                     <div class="offer-badge">
                         <i class="fas fa-fire"></i> Limited Time
                     </div>
@@ -440,12 +444,12 @@
                         <p class="offer-description">Book your Sri Lanka tour package and save up to 50% on selected
                             routes</p>
                         <div class="offer-discount">Up to 50% off</div>
-                        <a href="tours.html" class="offer-cta">Book now!</a>
+                        <a href="javascript:void(0)" class="offer-cta">Book now!</a>
                     </div>
                 </div>
 
                 <!-- Offer 2 -->
-                <div class="offer-card">
+                <div class="offer-card" onclick="openOfferModal(event, 'offer-modal-2')">
                     <div class="offer-badge" style="background: #10b981;">
                         <i class="fas fa-tag"></i> Best Deal
                     </div>
@@ -457,12 +461,12 @@
                         <h3 class="offer-title">Airport Transfer Special</h3>
                         <p class="offer-description">Save $80 on round-trip airport transfers with luxury vehicles</p>
                         <div class="offer-discount">$80 OFF</div>
-                        <a href="contact.html" class="offer-cta">Book now!</a>
+                        <a href="javascript:void(0)" class="offer-cta">Book now!</a>
                     </div>
                 </div>
 
                 <!-- Offer 3 -->
-                <div class="offer-card">
+                <div class="offer-card" onclick="openOfferModal(event, 'offer-modal-3')">
                     <div class="offer-badge" style="background: #6366f1;">
                         <i class="fas fa-percent"></i> Now on sale
                     </div>
@@ -474,7 +478,7 @@
                         <h3 class="offer-title">Top travel deals</h3>
                         <p class="offer-description">Hotels, experiences & more with exclusive partner discounts</p>
                         <div class="offer-discount">Up to 30% off</div>
-                        <a href="tours.html" class="offer-cta">Explore deals</a>
+                        <a href="javascript:void(0)" class="offer-cta">Explore deals</a>
                     </div>
                 </div>
             </div>
@@ -579,7 +583,9 @@
                     <div class="dest-content-box">
                         <h3>Ancient Marvels Await</h3>
                         <div class="dest-btn-wrapper">
-                            <a href="tours.html" class="btn-explore-pill">Explore <i class="fas fa-arrow-right"></i></a>
+                            <a href="javascript:void(0)" class="btn-explore-pill"
+                                onclick="openDestModal(event, 'dest-modal-1')">Explore <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                         <p>From breathtaking rock fortresses to ancient ruins, explore the rich history of Sri Lanka.
                         </p>
@@ -594,7 +600,9 @@
                     <div class="dest-content-box">
                         <h3>Discover the Pulse of Nature</h3>
                         <div class="dest-btn-wrapper">
-                            <a href="tours.html" class="btn-explore-pill">Explore <i class="fas fa-arrow-right"></i></a>
+                            <a href="javascript:void(0)" class="btn-explore-pill"
+                                onclick="openDestModal(event, 'dest-modal-2')">Explore <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
                         <p>Dive into Ella's blend of misty mountains and lush tea plantations. Explore buzzing cafes and
                             awe-inspiring views.</p>
@@ -704,7 +712,8 @@
             </div>
             <div class="fleet-grid-enhanced">
                 <!-- Mini Car -->
-                <div class="vehicle-card-enhanced">
+                <div class="vehicle-card-enhanced" onclick="window.location.href='vehicles.html#fleet'"
+                    style="cursor: pointer;">
                     <div class="vehicle-image-enhanced"
                         style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
                         <img src="assets/images/mini-car.jpg" alt="Mini Car">
@@ -721,7 +730,8 @@
                 </div>
 
                 <!-- Sedan -->
-                <div class="vehicle-card-enhanced">
+                <div class="vehicle-card-enhanced" onclick="window.location.href='vehicles.html#fleet'"
+                    style="cursor: pointer;">
                     <div class="vehicle-image-enhanced"
                         style="background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);">
                         <img src="assets/images/sedan.jpg" alt="Sedan">
@@ -738,7 +748,8 @@
                 </div>
 
                 <!-- Mini Van -->
-                <div class="vehicle-card-enhanced">
+                <div class="vehicle-card-enhanced" onclick="window.location.href='vehicles.html#fleet'"
+                    style="cursor: pointer;">
                     <div class="vehicle-image-enhanced"
                         style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);">
                         <img src="assets/images/mini-van.jpg" alt="Mini Van">
@@ -755,7 +766,8 @@
                 </div>
 
                 <!-- High Roof Van -->
-                <div class="vehicle-card-enhanced">
+                <div class="vehicle-card-enhanced" onclick="window.location.href='vehicles.html#fleet'"
+                    style="cursor: pointer;">
                     <div class="vehicle-image-enhanced"
                         style="background: linear-gradient(135deg, #1f2937 0%, #374151 100%);">
                         <img src="assets/images/high-roof.jpg" alt="High Roof Van">
@@ -1018,6 +1030,146 @@
     <a href="https://wa.me/94743592570" class="whatsapp-float" target="_blank">
         <span class="whatsapp-icon">💬</span>
     </a>
+
+    <!-- Offer Modals -->
+    <div class="offer-modal-overlay" id="offer-modal-1" onclick="closeOfferModalOutside(event, 'offer-modal-1')">
+        <div class="offer-modal-content">
+            <button class="offer-modal-close" onclick="closeOfferModal('offer-modal-1')"><i
+                    class="fas fa-times"></i></button>
+            <div class="offer-modal-body">
+                <div class="offer-modal-left">
+                    <span class="offer-modal-pill">LIMITED TIME</span>
+                    <h2 class="offer-modal-title">2026 Adventure Starts Here!</h2>
+                    <div class="offer-modal-subtitle">Up to 50% off</div>
+                    <p class="offer-modal-text">Book your Sri Lanka tour package and save up to 50% on selected routes.
+                        Start your adventure now and explore the beautiful landscapes, pristine beaches, and rich
+                        cultural heritage of Sri Lanka.</p>
+                    <div class="offer-modal-instructions">
+                        <p>To claim this limited-time offer:</p>
+                        <ol>
+                            <li>Pick your preferred tour package from our wide collection.</li>
+                            <li>Apply the promo code <strong>2026ADVENTURE</strong> at checkout.</li>
+                            <li>Enjoy up to 50% off on your booking.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="offer-modal-right">
+                    <img src="assets/images/ella-nine-arch.png" alt="Tour Offer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="offer-modal-overlay" id="offer-modal-2" onclick="closeOfferModalOutside(event, 'offer-modal-2')">
+        <div class="offer-modal-content">
+            <button class="offer-modal-close" onclick="closeOfferModal('offer-modal-2')"><i
+                    class="fas fa-times"></i></button>
+            <div class="offer-modal-body">
+                <div class="offer-modal-left">
+                    <span class="offer-modal-pill" style="background: #d1fae5; color: #065f46;">BEST DEAL</span>
+                    <h2 class="offer-modal-title">Airport Transfer Special</h2>
+                    <div class="offer-modal-subtitle">$80 OFF</div>
+                    <p class="offer-modal-text">Save $80 on round-trip airport transfers with our luxury vehicles.
+                        Arrive in comfort and style without breaking the bank. Professional drivers and premium service
+                        guaranteed.</p>
+                    <div class="offer-modal-instructions">
+                        <p>To claim this best deal:</p>
+                        <ol>
+                            <li>Book a round-trip airport transfer online or via phone.</li>
+                            <li>Select any vehicle from our premium fleet.</li>
+                            <li>Receive an instant $80 discount on your total fare automatically.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="offer-modal-right">
+                    <img src="assets/images/sedan.jpg" alt="Airport Transfer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="offer-modal-overlay" id="offer-modal-3" onclick="closeOfferModalOutside(event, 'offer-modal-3')">
+        <div class="offer-modal-content">
+            <button class="offer-modal-close" onclick="closeOfferModal('offer-modal-3')"><i
+                    class="fas fa-times"></i></button>
+            <div class="offer-modal-body">
+                <div class="offer-modal-left">
+                    <span class="offer-modal-pill" style="background: #e0e7ff; color: #3730a3;">NOW ON SALE</span>
+                    <h2 class="offer-modal-title">Top travel deals</h2>
+                    <div class="offer-modal-subtitle">Up to 30% off</div>
+                    <p class="offer-modal-text">Hotels, experiences & more with exclusive partner discounts. Unleash the
+                        true traveler in you with our top travel deals and explore Sri Lanka's finest attractions.</p>
+                    <div class="offer-modal-instructions">
+                        <p>To claim this top deal:</p>
+                        <ol>
+                            <li>Explore our partnered hotels and exciting local experiences.</li>
+                            <li>Add your favorite activities to your customized itinerary.</li>
+                            <li>Get up to 30% off your added experiences upon confirmation.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="offer-modal-right">
+                    <img src="assets/images/yala-national-park.png" alt="Travel Deals">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Destination Modals -->
+    <div class="dest-modal-overlay" id="dest-modal-1" onclick="closeDestModalOutside(event, 'dest-modal-1')">
+        <div class="dest-modal-content">
+            <button class="dest-modal-close" onclick="closeDestModal('dest-modal-1')"><i
+                    class="fas fa-times"></i></button>
+            <div class="dest-modal-image">
+                <img src="assets/images/sigiriya-fortress.png" alt="Sigiriya">
+            </div>
+            <div class="dest-modal-body">
+                <span class="dest-modal-pill">CULTURAL HERITAGE</span>
+                <h2 class="dest-modal-title">Ancient Marvels Await</h2>
+                <div class="dest-modal-subtitle">Sigiriya Rock Fortress & Ruins</div>
+                <p class="dest-modal-text">Step back in time and scale the magnificent Sigiriya Rock Fortress. Often
+                    referred to as the "Eighth Wonder of the World", this ancient palace and fortress complex features
+                    stunning water gardens, ancient frescoes, and breathtaking panoramic views from its summit. Unveil
+                    the rich history of Sri Lankan royalty.</p>
+                <ul class="dest-modal-features">
+                    <li><i class="fas fa-map-marker-alt"></i> Selected route: Cultural Triangle Tour</li>
+                    <li><i class="fas fa-clock"></i> Recommended duration: 1-2 Days</li>
+                    <li><i class="fas fa-hiking"></i> 1200 steps to the top</li>
+                    <li><i class="fas fa-camera"></i> World heritage site, perfect for photography</li>
+                </ul>
+                <a href="tours.html#cultural-triangle" class="dest-modal-cta">
+                    View Package Details <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="dest-modal-overlay" id="dest-modal-2" onclick="closeDestModalOutside(event, 'dest-modal-2')">
+        <div class="dest-modal-content">
+            <button class="dest-modal-close" onclick="closeDestModal('dest-modal-2')"><i
+                    class="fas fa-times"></i></button>
+            <div class="dest-modal-image">
+                <img src="assets/images/tour-hero.jpg" alt="Ella">
+            </div>
+            <div class="dest-modal-body">
+                <span class="dest-modal-pill">NATURE & WILDLIFE</span>
+                <h2 class="dest-modal-title">Discover the Pulse of Nature</h2>
+                <div class="dest-modal-subtitle">Ella's Misty Mountains</div>
+                <p class="dest-modal-text">Immerse yourself in the cool climate and lush tea plantations of Ella. Known
+                    for its world-famous Nine Arch Bridge, Little Adam's Peak, and cascading waterfalls. Whether you're
+                    a hiker seeking sweeping views or a traveler looking for a cozy café culture, Ella has it all.</p>
+                <ul class="dest-modal-features">
+                    <li><i class="fas fa-map-marker-alt"></i> Selected route: Hill Country Escapade</li>
+                    <li><i class="fas fa-clock"></i> Recommended duration: 2-3 Days</li>
+                    <li><i class="fas fa-train"></i> Famous scenic train ride access</li>
+                    <li><i class="fas fa-coffee"></i> Surround yourself with lush tea estates</li>
+                </ul>
+                <a href="tours.html#hill-country" class="dest-modal-cta">
+                    View Package Details <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
     <script>
