@@ -166,6 +166,10 @@
     }
 }
 
+.mobile-only-btn {
+    display: none;
+}
+
 /* ===== RESET & BASE ===== */
 * {
     margin: 0;
@@ -2763,6 +2767,23 @@ section {
         transform: translateY(0);
         opacity: 1;
         pointer-events: all;
+    }
+
+    .desktop-only-btn {
+        display: none !important;
+    }
+
+    .mobile-only-btn {
+        display: flex !important;
+        justify-content: center;
+        margin-top: var(--spacing-md);
+        padding-top: var(--spacing-md);
+        border-top: 1px solid var(--gray-200);
+        width: 100%;
+    }
+
+    .mobile-only-btn .btn-book-nav {
+        width: 100%;
     }
 
     .hero-title {
