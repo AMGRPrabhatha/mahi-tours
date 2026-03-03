@@ -256,6 +256,32 @@
             }
         }
 
+        @media (max-width: 576px) {
+            .vehicles-grid {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                scroll-padding: var(--spacing-md);
+                gap: var(--spacing-md);
+                padding-bottom: var(--spacing-md);
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .vehicles-grid::-webkit-scrollbar {
+                display: none;
+            }
+
+            .vehicle-card-modern {
+                width: 80vw;
+                max-width: 320px;
+                flex: 0 0 auto;
+                scroll-snap-align: center;
+                min-height: auto;
+            }
+        }
+
         /* ===== BOOKING FORM SECTION ===== */
         .booking-form-section {
             padding: var(--spacing-2xl) 0;
