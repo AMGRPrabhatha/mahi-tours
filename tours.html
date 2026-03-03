@@ -254,6 +254,18 @@
                 transform: translateY(5px);
             }
         }
+
+        /* Force mobile toggle visibility */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: flex !important;
+                z-index: 9999;
+            }
+
+            .mobile-toggle span {
+                background: var(--ocean-blue) !important;
+            }
+        }
     </style>
 </head>
 
