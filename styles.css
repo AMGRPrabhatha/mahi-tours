@@ -2802,6 +2802,38 @@ section {
         grid-column: span 1;
     }
 
+    .offer-card {
+        min-height: auto;
+        max-height: none;
+        flex-direction: column;
+    }
+
+    .offer-image {
+        height: 100px;
+    }
+
+    .offer-content {
+        padding: var(--spacing-sm);
+    }
+
+    .offer-title {
+        font-size: 1rem;
+    }
+
+    .offer-description {
+        font-size: 0.8rem;
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .offer-discount {
+        font-size: 1.1rem;
+    }
+
+    .offer-badge {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.5rem;
+    }
+
     .footer-bottom {
         flex-direction: column;
         text-align: center;
