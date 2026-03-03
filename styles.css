@@ -3012,6 +3012,32 @@ section {
     }
 }
 
+@media (max-width: 576px) {
+    .gallery-modern-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+
+    .gallery-col {
+        display: contents;
+    }
+
+    .gallery-img,
+    .gallery-col.col-stacked .gallery-img,
+    .gallery-col.col-1 .gallery-img,
+    .gallery-col.col-5 .gallery-img {
+        width: 100%;
+        height: 140px;
+        border-radius: var(--radius-md);
+    }
+
+    .gallery-col.col-center .gallery-img {
+        grid-column: span 2;
+        height: 200px;
+    }
+}
+
 /* ===== FEATURED HIGHLIGHT SECTION ===== */
 .featured-highlight {
     padding: var(--spacing-3xl) 0 var(--spacing-xl);
