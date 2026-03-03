@@ -288,6 +288,7 @@ ul {
     background: none;
     border: none;
     cursor: pointer;
+    z-index: 2000;
 }
 
 .mobile-toggle span {
@@ -4019,6 +4020,12 @@ section {
     color: var(--gray-900);
     line-height: 1.1;
     margin-bottom: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+    .about-hero-modern {
+        padding-top: 100px;
+    }
 }
 
 .hero-desc-modern {
